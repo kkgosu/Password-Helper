@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<clip xmlns:android="http://schemas.android.com/apk/res/android">
-    <level-list>
-        <item android:minLevel="0" android:maxLevel="24" >
-            <shape android:shape="rectangle" >
-                <solid android:color="@android:color/holo_red_dark"/>
-            </shape>
-        </item>
-        <item android:minLevel="25" android:maxLevel="49" >
-            <shape android:shape="rectangle" >
-                <solid android:color="@android:color/holo_orange_dark" />
-            </shape>
-        </item>
-        <item android:minLevel="50" android:maxLevel="74" >
-            <shape android:shape="rectangle" >
-                <solid android:color="@android:color/holo_orange_light" />
-            </shape>
-        </item>
-        <item android:minLevel="75" android:maxLevel="100" >
-            <shape android:shape="rectangle" >
-                <solid android:color="@android:color/holo_green_light" />
-            </shape>
-        </item>
-    </level-list>
-</clip>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:maxLevel="24"
+        android:minLevel="0">
+        <shape android:shape="rectangle">
+            <corners android:radius="4dp" />
+            <solid android:color="@android:color/holo_red_dark" />
+        </shape>
+    </item>
+    <item
+        android:maxLevel="49"
+        android:minLevel="25">
+        <shape android:shape="rectangle">
+            <corners android:radius="4dp" />
+            <solid android:color="@android:color/holo_orange_dark" />
+        </shape>
+    </item>
+    <item
+        android:maxLevel="74"
+        android:minLevel="50">
+        <shape android:shape="rectangle">
+            <corners android:radius="4dp" />
+            <solid android:color="@android:color/holo_orange_light" />
+        </shape>
+    </item>
+    <item
+        android:maxLevel="100"
+        android:minLevel="75">
+        <shape android:shape="rectangle">
+            <corners android:radius="4dp" />
+            <solid android:color="@android:color/holo_green_light" />
+        </shape>
+    </item>
+</level-list>

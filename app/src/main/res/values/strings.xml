@@ -3,6 +3,12 @@
     <string name="enter_password">Введите свой пароль на русской расскладке, получите на английской</string>
     <string name="password">Пароль</string>
     <string name="toast_text_copied">Текст скопирован</string>
+    <string name="u_can_generate_new_password">Также, Вы можете сгенерировать пароль требуемой сложности</string>
+    <string name="password_ru">Пароль на русском</string>
+    <string name="password_length">Длина пароля</string>
+    <string name="upper_case">Заглавные</string>
+    <string name="symbols">Символы</string>
+    <string name="numbers">Цифры</string>
 
     <plurals name="symbols_count">
         <item quantity="one">%1$d символ</item>

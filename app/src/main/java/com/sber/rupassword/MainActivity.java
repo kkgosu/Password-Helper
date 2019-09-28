@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +19,7 @@ public class MainActivity extends Activity {
     private EditText mPasswordInput;
     private TextView mResultText;
     private ImageButton mCopyButton;
-
+    private ImageView mComplexityImage;
 
     private String[] mRussians;
     private String[] mLatins;
@@ -32,6 +33,11 @@ public class MainActivity extends Activity {
         mPasswordInput = findViewById(R.id.password_input);
         mResultText = findViewById(R.id.text_result);
         mCopyButton = findViewById(R.id.copy_password_button);
+        mComplexityImage = findViewById(R.id.complexity_input);
+
+        for (int i = 0; i < 75; i++) {
+            mComplexityImage.getDrawable().setLevel(i);
+        }
 
         mRussians = getResources().getStringArray(R.array.russians);
         mLatins = getResources().getStringArray(R.array.latins);
