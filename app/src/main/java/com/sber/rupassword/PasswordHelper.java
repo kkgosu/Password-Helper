@@ -7,6 +7,10 @@ public class PasswordHelper {
     public PasswordHelper(String[] russians, String[] latins) {
         this.russians = russians;
         this.latins = latins;
+
+        if (russians.length != latins.length) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public String convert(CharSequence input) {
@@ -16,8 +20,8 @@ public class PasswordHelper {
             boolean found = false;
 
             for (int j = 0; j < russians.length; j++) {
-                if (russians[j].equals(String.valueOf(c))) {
-                    result.append(latins[j]);
+                if (russians[j].equals(String.valueOf(c).toLowerCase())) {
+                    result.append(Character.isUpperCase(c) ? latins[j].toUpperCase() : latins[j]);
                     found = true;
                     break;
                 }
