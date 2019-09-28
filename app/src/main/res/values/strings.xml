@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">RuPassword</string>
-    <string name="enter_password">Введите свой пароль на русском</string>
+    <string name="enter_password">Введите свой пароль на русской расскладке, получите на английской</string>
+    <string name="password">Пароль</string>
+    <string name="toast_text_copied">Текст скопирован</string>
+
+    <plurals name="symbols_count">
+        <item quantity="one">%1$d символ</item>
+        <item quantity="two">%1$d символа</item>
+        <item quantity="few">%1$d символа</item>
+        <item quantity="many">%1$d символов</item>
+        <item quantity="other">%1$d символов</item>
+    </plurals>
 
     <string-array name="russians">
         <item>й</item>
@@ -67,6 +77,7 @@
         <item>m</item>
         <item>,</item>
         <item>.</item>
-
     </string-array>
+
+
 </resources>

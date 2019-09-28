@@ -14,19 +14,85 @@
         android:text="@string/enter_password"
         android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
-    <TextView
-        android:id="@+id/text_result"
-        style="@style/ResultTextView"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/result_margin"
-        android:layout_marginBottom="@dimen/result_margin"
-        android:textAppearance="@style/ResultTextAppearance"
-        tools:text="Result" />
+        android:background="@drawable/white_rounded_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_result"
+            style="@style/ResultTextView"
+            android:layout_marginTop="@dimen/result_margin"
+            android:layout_marginBottom="@dimen/result_margin"
+            android:layout_weight="1"
+            tools:text="Result" />
+
+        <ImageButton
+            android:id="@+id/copy_password_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/copy_button_padding"
+            android:src="@drawable/ic_content_copy_black_24dp" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/password_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_rounded_bg">
+
+        <TextView
+            android:id="@+id/text_result_generated"
+            style="@style/ResultTextView"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/result_margin"
+            android:layout_marginBottom="@dimen/result_margin"
+            android:layout_toLeftOf="@id/copy_password_generated_button"
+            android:text="Result" />
+
+        <ImageButton
+            android:id="@+id/copy_password_generated_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/copy_button_padding"
+            android:src="@drawable/ic_content_copy_black_24dp" />
+    </RelativeLayout>
+
+    <CheckBox
+        android:id="@+id/check_caps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Заглавные"
+        android:checked="true" />
+    <CheckBox
+        android:id="@+id/check_symbols"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Символы"
+        android:checked="true" />
+    <CheckBox
+        android:id="@+id/check_numbers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Цифры"
+        android:checked="false" />
+
+    <Button
+        android:id="@+id/generate_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Сгенерировать" />
+
 </LinearLayout>
