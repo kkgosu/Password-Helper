@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -25,6 +26,7 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
     private TextView mPasswordLength;
     private ImageButton mCopyButton;
     private ImageButton mCopyButtonGenerated;
+    private ImageButton mRegeneratePassword;
     private ImageView mComplexityInput;
     private ImageView mComplexityGenerated;
     private SeekBar mSeekBar;
@@ -53,7 +55,9 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
         mPasswordLength = findViewById(R.id.password_length);
         mCopyButton = findViewById(R.id.copy_password_button);
         mCopyButtonGenerated = findViewById(R.id.copy_password_generated_button);
+        mRegeneratePassword = findViewById(R.id.regenerate_password_button);
         mComplexityInput = findViewById(R.id.complexity_input);
+        mComplexityGenerated = findViewById(R.id.complexity_generated);
         mSeekBar = findViewById(R.id.seekbar);
         mCaps = findViewById(R.id.check_caps);
         mSymbols = findViewById(R.id.check_symbols);
@@ -64,8 +68,9 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
         mNumbers.setOnCheckedChangeListener(this);
 
         mCopyButton.setEnabled(false);
-        mCopyButton.setOnClickListener(v -> copyToClipboard(mResultText));
+        mCopyButton.setOnClickListener(view -> copyToClipboard(mResultText));
         mCopyButtonGenerated.setOnClickListener(view -> copyToClipboard(mResultGeneratedText));
+        mRegeneratePassword.setOnClickListener(view -> generatePassword());
 
         setPlurals();
         generatePassword();
@@ -80,6 +85,9 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 mResultText.setText(helper.convert(s));
                 mCopyButton.setEnabled(s.length() > 0);
+
+                Log.i("TAG", "onTextChanged: " + helper.calculateStrength(mResultText.getText().toString()));
+                mComplexityInput.getDrawable().setLevel(helper.calculateStrength(mResultText.getText().toString()));
             }
 
             @Override
@@ -116,6 +124,9 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
     private void generatePassword() {
         mResultGeneratedText.setText(helper.generatePassword(mSymbolsQuantity, mCaps.isChecked(),
                 mSymbols.isChecked(), mNumbers.isChecked()));
+
+        Log.i("TAG", "generatePassword: " + helper.calculateStrength(mResultGeneratedText.getText().toString()));
+        mComplexityGenerated.getDrawable().setLevel(helper.calculateStrength(mResultGeneratedText.getText().toString()));
     }
 
     private void copyToClipboard(TextView password) {

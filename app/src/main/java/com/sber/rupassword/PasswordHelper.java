@@ -1,6 +1,7 @@
 package com.sber.rupassword;
 
 import java.util.Random;
+import java.util.regex.Pattern;
 
 public class PasswordHelper {
     private final String[] russians;
@@ -9,7 +10,8 @@ public class PasswordHelper {
     private final String mEngCaps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private final String mEng = "abcdefghijklmnopqrstuvwxyz";
     private final String mNumbers = "0123456789";
-    private final String mSymbols = "!@#$%^&*_=+-/";
+    private final String mSymbols = "!@#$%^&*_=+/";
+    private String password;
 
     public PasswordHelper(String[] russians, String[] latins) {
         this.russians = russians;
@@ -57,7 +59,27 @@ public class PasswordHelper {
         for (int i = 0; i < length; i++) {
             resultPassword.append(dictionary.charAt(random.nextInt(dictionary.length())));
         }
-        return resultPassword.toString();
+
+        password = resultPassword.toString();
+        return password;
     }
 
+    public int calculateStrength(String password) {
+        StringBuilder builder = new StringBuilder();
+        if (Pattern.matches(".*\\d+.*", password))
+            builder.append(mNumbers);
+        if (Pattern.matches(".*[a-z]+.*", password))
+            builder.append(mEng);
+        if (Pattern.matches(".*[A-Z]+.*", password))
+            builder.append(mEngCaps);
+        if (Pattern.matches(".*[!@#$%^&*_=+/]+.*", password))
+            builder.append(mSymbols);
+
+        double entropyPerCharacter = log2(Math.pow(builder.length(), password.length()));
+        return (int) (entropyPerCharacter);
+    }
+
+    private double log2(double n) {
+        return (Math.log(n) / Math.log(2));
+    }
 }
