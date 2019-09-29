@@ -7,7 +7,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -24,6 +23,8 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
     private TextView mResultText;
     private TextView mResultGeneratedText;
     private TextView mPasswordLength;
+    private TextView mPasswordInputBits;
+    private TextView mPasswordGeneratedBits;
     private ImageButton mCopyButton;
     private ImageButton mCopyButtonGenerated;
     private ImageButton mRegeneratePassword;
@@ -53,6 +54,8 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
         mResultText = findViewById(R.id.text_result);
         mResultGeneratedText = findViewById(R.id.text_result_generated);
         mPasswordLength = findViewById(R.id.password_length);
+        mPasswordInputBits = findViewById(R.id.password_input_bits);
+        mPasswordGeneratedBits = findViewById(R.id.password_generated_bits);
         mCopyButton = findViewById(R.id.copy_password_button);
         mCopyButtonGenerated = findViewById(R.id.copy_password_generated_button);
         mRegeneratePassword = findViewById(R.id.regenerate_password_button);
@@ -72,7 +75,7 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
         mCopyButtonGenerated.setOnClickListener(view -> copyToClipboard(mResultGeneratedText));
         mRegeneratePassword.setOnClickListener(view -> generatePassword());
 
-        setPlurals();
+        setTextViews();
         generatePassword();
 
         mPasswordInput.addTextChangedListener(new TextWatcher() {
@@ -86,8 +89,9 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
                 mResultText.setText(helper.convert(s));
                 mCopyButton.setEnabled(s.length() > 0);
 
-                Log.i("TAG", "onTextChanged: " + helper.calculateStrength(mResultText.getText().toString()));
-                mComplexityInput.getDrawable().setLevel(helper.calculateStrength(mResultText.getText().toString()));
+                int bits = helper.calculateStrength(mResultText.getText().toString());
+                mPasswordInputBits.setText(getString(R.string.bits, bits));
+                mComplexityInput.getDrawable().setLevel(bits);
             }
 
             @Override
@@ -99,7 +103,7 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 mSymbolsQuantity = MIN_QUANTITY + i;
-                setPlurals();
+                setTextViews();
                 generatePassword();
             }
 
@@ -125,8 +129,9 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
         mResultGeneratedText.setText(helper.generatePassword(mSymbolsQuantity, mCaps.isChecked(),
                 mSymbols.isChecked(), mNumbers.isChecked()));
 
-        Log.i("TAG", "generatePassword: " + helper.calculateStrength(mResultGeneratedText.getText().toString()));
-        mComplexityGenerated.getDrawable().setLevel(helper.calculateStrength(mResultGeneratedText.getText().toString()));
+        int bits = helper.calculateStrength(mResultGeneratedText.getText().toString());
+        mPasswordGeneratedBits.setText(getString(R.string.bits, bits));
+        mComplexityGenerated.getDrawable().setLevel(bits);
     }
 
     private void copyToClipboard(TextView password) {
@@ -138,9 +143,10 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
         }
     }
 
-    private void setPlurals() {
+    private void setTextViews() {
         String symbols = getResources().getQuantityString(
                 R.plurals.symbols_count, mSymbolsQuantity, mSymbolsQuantity);
         mPasswordLength.setText(symbols);
+        mPasswordInputBits.setText(getString(R.string.bits, 0));
     }
 }

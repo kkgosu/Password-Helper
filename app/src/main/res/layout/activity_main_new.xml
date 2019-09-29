@@ -19,13 +19,8 @@
             android:contentInsetStart="0dp">
 
             <TextView
-                style="@style/ResultTextAppearance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/app_name"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
+                style="@style/Header"
+                android:text="@string/app_name" />
         </Toolbar>
 
         <RelativeLayout
@@ -37,13 +32,7 @@
             <TextView
                 android:id="@+id/text_result"
                 style="@style/ResultTextView"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="@dimen/result_margin"
-                android:layout_marginBottom="@dimen/result_margin"
-                android:layout_toStartOf="@id/copy_password_button"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+                android:layout_toStartOf="@id/copy_password_button" />
 
             <ImageButton
                 android:id="@+id/copy_password_button"
@@ -59,21 +48,19 @@
         </RelativeLayout>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/password_length"
-            android:textAppearance="@android:style/TextAppearance.Material"
-            android:textColor="@color/blue_grey_500" />
+            android:id="@+id/password_input_bits"
+            style="@style/BitsTextView" />
 
         <EditText
             android:id="@+id/password_input"
             style="@style/Input"
             android:layout_width="match_parent"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:background="@drawable/new_input_bg"
             android:hint="@string/password_ru"
             android:inputType="text"
-            android:textColor="@color/grey_800" />
+            android:textColor="@color/grey_800"
+            android:textColorHint="@color/blue_grey_500" />
 
         <View
             android:layout_width="match_parent"
@@ -86,9 +73,7 @@
             style="@style/HeadTextView"
             android:background="@color/material_blue"
             android:paddingTop="8dp"
-            android:text="@string/u_can_generate_new_password"
-            android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:text="@string/u_can_generate_new_password" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -99,14 +84,7 @@
             <TextView
                 android:id="@+id/text_result_generated"
                 style="@style/ResultTextView"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="@dimen/result_margin"
-                android:layout_marginBottom="@dimen/result_margin"
-                android:layout_toStartOf="@id/copy_password_generated_button"
-                android:text="Result"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
+                android:layout_toStartOf="@id/copy_password_generated_button" />
 
             <ImageButton
                 android:id="@+id/copy_password_generated_button"
@@ -128,6 +106,10 @@
                 style="@style/ComplexityView" />
         </RelativeLayout>
 
+        <TextView
+            android:id="@+id/password_generated_bits"
+            style="@style/BitsTextView" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,19 +119,13 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/password_length"
-                android:textAppearance="@android:style/TextAppearance.Material"
-                android:textColor="@color/blue_grey_500" />
+                style="@style/PasswordLengthText"
+                android:text="@string/password_length" />
 
             <TextView
                 android:id="@+id/password_length"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:textAppearance="@android:style/TextAppearance.Material"
-                android:textColor="@color/blue_grey_500" />
+                style="@style/PasswordLengthText"
+                android:layout_marginStart="4dp" />
         </LinearLayout>
 
 
@@ -171,7 +147,6 @@
                 android:id="@+id/check_caps"
                 style="@style/Switch"
                 android:layout_marginTop="8dp"
-                android:buttonTint="@color/material_blue"
                 android:checked="true"
                 android:text="@string/upper_case" />
 
