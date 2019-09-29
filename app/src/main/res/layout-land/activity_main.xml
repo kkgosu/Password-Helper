@@ -1,33 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/activity_padding"
+    android:background="@color/grey_100"
     tools:context=".MainActivity">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/enter_password"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_result"
-        style="@style/ResultTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/result_margin"
-        android:layout_marginBottom="@dimen/result_margin"
-        android:textAppearance="@style/ResultTextAppearance"
-        android:textColor="@android:color/holo_red_dark"
-        tools:text="Result" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/password_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text" />
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/toolbar"
+                    style="@style/Header"
+                    android:layout_height="64dp"
+                    android:background="@color/material_blue"
+                    android:text="@string/convert_password" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_blue"
+                    android:paddingTop="16dp">
+
+                    <TextView
+                        android:id="@+id/text_result"
+                        style="@style/ResultTextView"
+                        android:layout_toStartOf="@id/copy_password_button" />
+
+                    <ImageButton
+                        android:id="@+id/copy_password_button"
+                        style="@style/ImageButton"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_content_copy_black_24dp"
+                        android:tint="@color/white" />
+
+                    <ImageView
+                        android:id="@+id/complexity_input"
+                        style="@style/ComplexityView" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/password_input_bits"
+                    style="@style/BitsTextView" />
+
+                <EditText
+                    android:id="@+id/password_input"
+                    style="@style/Input"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/new_input_bg"
+                    android:hint="@string/password_ru"
+                    android:inputType="text"
+                    android:textColor="@color/grey_800"
+                    android:textColorHint="@color/blue_grey_500" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/blue_grey_100" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/Header"
+                    android:layout_height="64dp"
+                    android:background="@color/material_blue"
+                    android:text="@string/u_can_generate_new_password" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/material_blue"
+                    android:paddingTop="16dp">
+
+                    <TextView
+                        android:id="@+id/text_result_generated"
+                        style="@style/ResultTextView"
+                        android:layout_toStartOf="@id/copy_password_generated_button" />
+
+                    <ImageButton
+                        android:id="@+id/copy_password_generated_button"
+                        style="@style/ImageButton"
+                        android:layout_toStartOf="@id/regenerate_password_button"
+                        android:src="@drawable/ic_content_copy_black_24dp"
+                        android:tint="@color/white" />
+
+                    <ImageButton
+                        android:id="@+id/regenerate_password_button"
+                        style="@style/ImageButton"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="16dp"
+                        android:src="@drawable/ic_refresh_black_24dp"
+                        android:tint="@color/white" />
+
+                    <ImageView
+                        android:id="@+id/complexity_generated"
+                        style="@style/ComplexityView" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/password_generated_bits"
+                    style="@style/BitsTextView" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/PasswordLengthText"
+                        android:text="@string/password_length" />
+
+                    <TextView
+                        android:id="@+id/password_length"
+                        style="@style/PasswordLengthText"
+                        android:layout_marginStart="4dp" />
+                </LinearLayout>
+
+                <SeekBar
+                    android:id="@+id/seekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:max="20"
+                    android:progressBackgroundTint="@color/blue_grey_500"
+                    android:progressTint="@color/material_blue"
+                    android:thumbTint="@color/material_blue" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/check_caps"
+                style="@style/Switch.Horizontal"
+                android:checked="true"
+                android:text="@string/upper_case" />
+
+            <Switch
+                android:id="@+id/check_symbols"
+                style="@style/Switch.Horizontal"
+                android:checked="true"
+                android:text="@string/symbols" />
+
+            <Switch
+                android:id="@+id/check_numbers"
+                style="@style/Switch.Horizontal"
+                android:checked="false"
+                android:text="@string/numbers" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

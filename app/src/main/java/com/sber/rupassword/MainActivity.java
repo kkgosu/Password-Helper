@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements CompoundButton.OnCheckedChangeListener {
 
-    PasswordHelper helper;
+    private PasswordHelper helper;
 
     private EditText mPasswordInput;
     private TextView mResultText;
@@ -38,13 +38,13 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
     private String[] mRussians;
     private String[] mLatins;
 
-    private int MIN_QUANTITY = 4;
+    private final int MIN_QUANTITY = 4;
     private int mSymbolsQuantity = MIN_QUANTITY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_new);
+        setContentView(R.layout.activity_main);
 
         mRussians = getResources().getStringArray(R.array.russians);
         mLatins = getResources().getStringArray(R.array.latins);
@@ -75,7 +75,8 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
         mCopyButtonGenerated.setOnClickListener(view -> copyToClipboard(mResultGeneratedText));
         mRegeneratePassword.setOnClickListener(view -> generatePassword());
 
-        setTextViews();
+        mPasswordInputBits.setText(getString(R.string.bits, 0));
+        setPlurals();
         generatePassword();
 
         mPasswordInput.addTextChangedListener(new TextWatcher() {
@@ -103,7 +104,7 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 mSymbolsQuantity = MIN_QUANTITY + i;
-                setTextViews();
+                setPlurals();
                 generatePassword();
             }
 
@@ -117,7 +118,6 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
 
             }
         });
-
     }
 
     @Override
@@ -127,7 +127,7 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
 
     private void generatePassword() {
         mResultGeneratedText.setText(helper.generatePassword(mSymbolsQuantity, mCaps.isChecked(),
-                mSymbols.isChecked(), mNumbers.isChecked()));
+                                                             mSymbols.isChecked(), mNumbers.isChecked()));
 
         int bits = helper.calculateStrength(mResultGeneratedText.getText().toString());
         mPasswordGeneratedBits.setText(getString(R.string.bits, bits));
@@ -143,10 +143,9 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
         }
     }
 
-    private void setTextViews() {
+    private void setPlurals() {
         String symbols = getResources().getQuantityString(
                 R.plurals.symbols_count, mSymbolsQuantity, mSymbolsQuantity);
         mPasswordLength.setText(symbols);
-        mPasswordInputBits.setText(getString(R.string.bits, 0));
     }
 }

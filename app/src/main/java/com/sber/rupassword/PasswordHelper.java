@@ -1,21 +1,22 @@
 package com.sber.rupassword;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.regex.Pattern;
 
-public class PasswordHelper {
-    private final String[] russians;
-    private final String[] latins;
+class PasswordHelper {
+    private final String[] mRussians;
+    private final String[] mLatins;
 
     private final String mEngCaps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private final String mEng = "abcdefghijklmnopqrstuvwxyz";
     private final String mNumbers = "0123456789";
-    private final String mSymbols = "!@#$%^&*_=+/";
-    private String password;
+    private final String mSymbols = "!@#$%^&*_=+/(){}[];:'";
 
     public PasswordHelper(String[] russians, String[] latins) {
-        this.russians = russians;
-        this.latins = latins;
+        this.mRussians = russians;
+        this.mLatins = latins;
 
         if (russians.length != latins.length) {
             throw new IllegalArgumentException();
@@ -24,23 +25,16 @@ public class PasswordHelper {
 
     public String convert(CharSequence input) {
         StringBuilder result = new StringBuilder();
+        List<String> russians = Arrays.asList(mRussians);
         for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
-            boolean found = false;
-
-            for (int j = 0; j < russians.length; j++) {
-                if (russians[j].equals(String.valueOf(c).toLowerCase())) {
-                    result.append(Character.isUpperCase(c) ? latins[j].toUpperCase() : latins[j]);
-                    found = true;
-                    break;
-                }
-            }
-
-            if (!found) {
+            int index = russians.indexOf(String.valueOf(c).toLowerCase());
+            if (Character.isLetter(c) && index != -1) {
+                result.append(Character.isUpperCase(c) ? mLatins[index].toUpperCase() : mLatins[index]);
+            } else {
                 result.append(c);
             }
         }
-
         return result.toString();
     }
 
@@ -60,8 +54,7 @@ public class PasswordHelper {
             resultPassword.append(dictionary.charAt(random.nextInt(dictionary.length())));
         }
 
-        password = resultPassword.toString();
-        return password;
+        return resultPassword.toString();
     }
 
     public int calculateStrength(String password) {
@@ -72,11 +65,11 @@ public class PasswordHelper {
             builder.append(mEng);
         if (Pattern.matches(".*[A-Z]+.*", password))
             builder.append(mEngCaps);
-        if (Pattern.matches(".*[!@#$%^&*_=+/]+.*", password))
+        if (Pattern.matches(".*[!@#$%^&*_=+/()'{};:\\[\\]]+.*", password))
             builder.append(mSymbols);
 
-        double entropyPerCharacter = log2(Math.pow(builder.length(), password.length()));
-        return (int) (entropyPerCharacter);
+        double entropy = log2(Math.pow(builder.length(), password.length()));
+        return (int) Math.round(entropy);
     }
 
     private double log2(double n) {

@@ -9,8 +9,6 @@
     <color name="colorPrimaryDark">@color/material_blue</color>
     <color name="colorAccent">#D81B60</color>
     <color name="material_blue">#6452f0</color>
-    <color name="material_blue_light">#d5d0fb</color>
-    <color name="grey_10">#e6e6e6</color>
     <color name="white">#FFFFFF</color>
     <color name="yellow_200">#ffff00</color>
 </resources>

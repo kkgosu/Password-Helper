@@ -1,15 +1,15 @@
 <resources>
     <string name="app_name">RuPassword</string>
-    <string name="enter_password">Введите свой пароль на русской расскладке, получите на английской</string>
     <string name="password">Пароль</string>
     <string name="toast_text_copied">Текст скопирован</string>
-    <string name="u_can_generate_new_password">Генерация пароля</string>
+    <string name="u_can_generate_new_password">Сгенерировать новый пароль</string>
     <string name="password_ru">Пароль на русском</string>
     <string name="password_length">Длина пароля</string>
     <string name="upper_case">Заглавные</string>
     <string name="symbols">Символы</string>
     <string name="numbers">Цифры</string>
     <string name="bits">%1$d бит</string>
+    <string name="convert_password">Преобразовать пароль</string>
 
     <plurals name="symbols_count">
         <item quantity="one">%1$d символ</item>
@@ -41,6 +41,8 @@
         <item>о</item>
         <item>л</item>
         <item>д</item>
+        <item>ж</item>
+        <item>э</item>
         <item>я</item>
         <item>ч</item>
         <item>с</item>
@@ -75,6 +77,8 @@
         <item>j</item>
         <item>k</item>
         <item>l</item>
+        <item>;</item>
+        <item>\'</item>
         <item>z</item>
         <item>x</item>
         <item>c</item>

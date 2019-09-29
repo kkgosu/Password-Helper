@@ -3,24 +3,22 @@ package com.sber.rupassword;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class PasswordHelperTest {
 
-    private static final String[] RUS = {"й","ц","у","к","е","н" };
-    private static final String[] ENG = {"q","w","e","r","t","y" };
-    public static final String[] SOURCES = {
+    private static final String[] RUS = {"й", "ц", "у", "к", "е", "н"};
+    private static final String[] ENG = {"q", "w", "e", "r", "t", "y"};
+    private static final String[] SOURCES = {
             "",
             "некуцй",
             "НЕКУЦЙ",
-            "ъхзщшгн"
     };
-    public static final String[] RESULTS = {
+    private static final String[] RESULTS = {
             "",
             "ytrewq",
             "YTREWQ",
-            "ъхзщшгy"
-
     };
     private PasswordHelper helper;
 
@@ -34,11 +32,20 @@ public class PasswordHelperTest {
         assertTrue("Error in test case", SOURCES.length == RESULTS.length);
         for (int i = 0; i < SOURCES.length; i++) {
             assertEquals(RESULTS[i], helper.convert(SOURCES[i]));
-
         }
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void name() {
+    @Test
+    public void entropy() {
+        String abc = "abc";
+        String ABC = "ABC";
+        String a1 = "a1";
+        String A1 = "A1";
+        String aA1 = "aA1";
+        assertEquals(14, helper.calculateStrength(abc));
+        assertEquals(14, helper.calculateStrength(ABC));
+        assertEquals(10, helper.calculateStrength(a1));
+        assertEquals(10, helper.calculateStrength(A1));
+        assertEquals(18, helper.calculateStrength(aA1));
     }
 }
