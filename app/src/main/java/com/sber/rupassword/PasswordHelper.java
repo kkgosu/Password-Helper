@@ -53,7 +53,6 @@ class PasswordHelper {
         for (int i = 0; i < length; i++) {
             resultPassword.append(dictionary.charAt(random.nextInt(dictionary.length())));
         }
-
         return resultPassword.toString();
     }
 

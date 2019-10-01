@@ -15,8 +15,7 @@
 
     <style name="Header">
         <item name="android:gravity">center</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">8dp</item>
         <item name="android:textAppearance">@style/HeaderTextAppearance</item>
     </style>
 
@@ -28,14 +27,7 @@
 
     <style name="ResultTextView">
         <item name="android:gravity">center_vertical</item>
-        <item name="android:layout_marginStart">8dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:textAppearance">@style/ResultTextAppearance</item>
-        <item name="android:layout_alignParentStart">true</item>
-        <item name="android:layout_centerVertical">true</item>
-        <item name="android:layout_marginTop">@dimen/result_margin</item>
-        <item name="android:layout_marginBottom">@dimen/result_margin</item>
         <item name="android:textAlignment">center</item>
     </style>
 
@@ -49,27 +41,22 @@
     </style>
 
     <style name="Input">
-        <item name="android:layout_height">52dp</item>
         <item name="android:background">@drawable/new_input_bg</item>
         <item name="android:imeOptions">flagNoExtractUi</item>
         <item name="android:padding">8dp</item>
-        <item name="android:textAppearance">@android:style/TextAppearance.Material.Medium</item>
+        <item name="android:textColor">@color/grey_800</item>
+        <item name="android:textColorHint">@color/blue_grey_500</item>
+        <item name="android:textAppearance">@style/Input.TextAppearance</item>
     </style>
 
     <style name="ImageButton">
-        <item name="android:layout_width">36dp</item>
-        <item name="android:layout_height">36dp</item>
-        <item name="android:layout_centerVertical">true</item>
-        <item name="android:tint">@color/grey_800</item>
+        <item name="android:tint">@color/white</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:padding">@dimen/copy_button_padding</item>
     </style>
 
     <style name="Switch">
         <item name="android:background">@color/white</item>
-        <item name="android:layout_marginBottom">1dp</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">44dp</item>
         <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">8dp</item>
         <item name="android:textAppearance">@android:style/TextAppearance.Material.Medium</item>
@@ -83,19 +70,12 @@
         <item name="android:layout_weight">1</item>
     </style>
 
-    <style name="BitsTextView">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">4dp</item>
+    <style name="BitsTextAppearance" parent="@android:style/TextAppearance.Material">
         <item name="android:textAlignment">center</item>
-        <item name="android:textAppearance">@android:style/TextAppearance.Material</item>
         <item name="android:textColor">@color/grey_800</item>
     </style>
 
-    <style name="PasswordLengthText">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAppearance">@android:style/TextAppearance.Material</item>
+    <style name="PasswordLengthTextAppearance" parent="@android:style/TextAppearance.Material">
         <item name="android:textColor">@color/blue_grey_500</item>
     </style>
 </resources>
