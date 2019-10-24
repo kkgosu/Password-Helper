@@ -1,6 +1,5 @@
 package com.sber.rupassword;
 
-import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -15,7 +14,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements CompoundButton.OnCheckedChangeListener {
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
+public class MainActivity extends FragmentActivity implements CompoundButton.OnCheckedChangeListener, PasswordsApp {
 
     private PasswordHelper helper;
 
@@ -127,7 +129,7 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
 
     private void generatePassword() {
         mResultGeneratedText.setText(helper.generatePassword(mSymbolsQuantity, mCaps.isChecked(),
-                                                             mSymbols.isChecked(), mNumbers.isChecked()));
+                mSymbols.isChecked(), mNumbers.isChecked()));
 
         int bits = helper.calculateStrength(mResultGeneratedText.getText().toString());
         mPasswordGeneratedBits.setText(getString(R.string.bits, bits));
@@ -139,7 +141,8 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
         if (manager != null) {
             manager.setPrimaryClip(ClipData.newPlainText(
                     getString(R.string.password), password.getText().toString()));
-            Toast.makeText(MainActivity.this, R.string.toast_text_copied, Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, R.string.toast_text_copied, Toast.LENGTH_SHORT)
+                 .show();
         }
     }
 
@@ -147,5 +150,23 @@ public class MainActivity extends Activity implements CompoundButton.OnCheckedCh
         String symbols = getResources().getQuantityString(
                 R.plurals.symbols_count, mSymbolsQuantity, mSymbolsQuantity);
         mPasswordLength.setText(symbols);
+    }
+
+    @Override
+    public void showTranslatedPassword(String password) {
+        Fragment fragment = getSupportFragmentManager()
+                .findFragmentByTag(getString(R.string.translated_tag));
+        if (fragment instanceof PasswordHolder) {
+            ((PasswordHolder) fragment).showPassword(password);
+        }
+    }
+
+    @Override
+    public void showGeneratedPassword(String password) {
+        Fragment fragment = getSupportFragmentManager()
+                .findFragmentByTag(getString(R.string.generated_tag));
+        if (fragment instanceof PasswordHolder) {
+            ((PasswordHolder) fragment).showPassword(password);
+        }
     }
 }
