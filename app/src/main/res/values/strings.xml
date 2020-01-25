@@ -10,6 +10,8 @@
     <string name="numbers">Цифры</string>
     <string name="bits">%1$d бит</string>
     <string name="convert_password">Преобразовать пароль</string>
+    <string name="translated_tag">translated</string>
+    <string name="generated_tag">generated</string>
 
     <plurals name="symbols_count">
         <item quantity="one">%1$d символ</item>
