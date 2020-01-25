@@ -9,14 +9,18 @@ class PasswordHelper {
     private final String[] mRussians;
     private final String[] mLatins;
 
-    private final String mEngCaps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private final String mEng = "abcdefghijklmnopqrstuvwxyz";
-    private final String mNumbers = "0123456789";
-    private final String mSymbols = "!@#$%^&*_=+/(){}[];:'";
+    private static final String ENG_LETTERS_CAPS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String ENG_LETTERS = "abcdefghijklmnopqrstuvwxyz";
+    private static final String NUMBERS = "0123456789";
+    private static final String SYMBOLS = "!@#$%^&*_=+/(){}[];:'";
+
+    private Random mRandom;
 
     public PasswordHelper(String[] russians, String[] latins) {
         this.mRussians = russians;
         this.mLatins = latins;
+
+        mRandom = new Random();
 
         if (russians.length != latins.length) {
             throw new IllegalArgumentException();
@@ -30,7 +34,8 @@ class PasswordHelper {
             char c = input.charAt(i);
             int index = russians.indexOf(String.valueOf(c).toLowerCase());
             if (Character.isLetter(c) && index != -1) {
-                result.append(Character.isUpperCase(c) ? mLatins[index].toUpperCase() : mLatins[index]);
+                result.append(
+                        Character.isUpperCase(c) ? mLatins[index].toUpperCase() : mLatins[index]);
             } else {
                 result.append(c);
             }
@@ -40,18 +45,17 @@ class PasswordHelper {
 
     public String generatePassword(int length, boolean caps, boolean symbols, boolean numbers) {
         StringBuilder resultPassword = new StringBuilder();
-        StringBuilder dictionary = new StringBuilder(mEng);
-        Random random = new Random();
+        StringBuilder dictionary = new StringBuilder(ENG_LETTERS);
 
         if (caps)
-            dictionary.append(mEngCaps);
+            dictionary.append(ENG_LETTERS_CAPS);
         if (symbols)
-            dictionary.append(mSymbols);
+            dictionary.append(SYMBOLS);
         if (numbers)
-            dictionary.append(mNumbers);
+            dictionary.append(NUMBERS);
 
         for (int i = 0; i < length; i++) {
-            resultPassword.append(dictionary.charAt(random.nextInt(dictionary.length())));
+            resultPassword.append(dictionary.charAt(mRandom.nextInt(dictionary.length())));
         }
         return resultPassword.toString();
     }
@@ -59,13 +63,13 @@ class PasswordHelper {
     public int calculateStrength(String password) {
         StringBuilder builder = new StringBuilder();
         if (Pattern.matches(".*\\d+.*", password))
-            builder.append(mNumbers);
+            builder.append(NUMBERS);
         if (Pattern.matches(".*[a-z]+.*", password))
-            builder.append(mEng);
+            builder.append(ENG_LETTERS);
         if (Pattern.matches(".*[A-Z]+.*", password))
-            builder.append(mEngCaps);
+            builder.append(ENG_LETTERS_CAPS);
         if (Pattern.matches(".*[!@#$%^&*_=+/()'{};:\\[\\]]+.*", password))
-            builder.append(mSymbols);
+            builder.append(SYMBOLS);
 
         double entropy = log2(Math.pow(builder.length(), password.length()));
         return (int) Math.round(entropy);
