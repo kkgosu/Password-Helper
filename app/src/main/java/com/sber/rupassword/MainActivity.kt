@@ -29,10 +29,11 @@ class MainActivity : Activity(), CompoundButton.OnCheckedChangeListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        
+        passwordHelper = PasswordHelper(ruLetters, enLetters)
+        
         ruLetters = resources.getStringArray(R.array.russians)
         enLetters = resources.getStringArray(R.array.latins)
-        passwordHelper = PasswordHelper(ruLetters, enLetters)
 
         capsBtn = findViewById(R.id.check_caps)
         symbolsBtn = findViewById(R.id.check_symbols)

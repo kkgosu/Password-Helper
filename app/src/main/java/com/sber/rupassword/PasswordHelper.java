@@ -16,9 +16,14 @@ class PasswordHelper {
 
     private Random mRandom;
 
+    public PasswordHelper() {
+        mRussians = new String[0];
+        mLatins = new String[0];
+    }
+
     public PasswordHelper(String[] russians, String[] latins) {
-        this.mRussians = russians;
-        this.mLatins = latins;
+        mRussians = russians;
+        mLatins = latins;
 
         mRandom = new Random();
 
@@ -73,6 +78,17 @@ class PasswordHelper {
 
         double entropy = log2(Math.pow(builder.length(), password.length()));
         return (int) Math.round(entropy);
+    }
+
+    public boolean checkMasterPassword(String inputPassword) {
+        if (isMasterPasswordExists()) {
+            return inputPassword.equals(PasswordPref.INSTANCE.getMasterPassword());
+        }
+        return false;
+    }
+
+    public boolean isMasterPasswordExists() {
+        return PasswordPref.INSTANCE.getMasterPassword().equals("");
     }
 
     private double log2(double n) {
