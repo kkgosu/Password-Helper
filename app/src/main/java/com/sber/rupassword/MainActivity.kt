@@ -22,21 +22,37 @@ class MainActivity : Activity(), CompoundButton.OnCheckedChangeListener {
 
     private var symbolsQuantity = MIN_QUANTITY
 
+    private lateinit var capsBtn: CompoundButton
+    private lateinit var symbolsBtn: CompoundButton
+    private lateinit var numbersBtn: CompoundButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
         ruLetters = resources.getStringArray(R.array.russians)
         enLetters = resources.getStringArray(R.array.latins)
         passwordHelper = PasswordHelper(ruLetters, enLetters)
+
+        capsBtn = findViewById(R.id.check_caps)
+        symbolsBtn = findViewById(R.id.check_symbols)
+        numbersBtn = findViewById(R.id.check_numbers)
 
         check_caps.setOnCheckedChangeListener(this)
         check_symbols.setOnCheckedChangeListener(this)
         check_numbers.setOnCheckedChangeListener(this)
 
         copy_password.isEnabled = false
-        regenerate_password.setOnClickListener { generatePassword() }
-        copy_password.setOnClickListener { copyToClipboard(password_result) }
-        copy_password_generated.setOnClickListener { copyToClipboard(password_generated_result) }
+
+        regenerate_password.setOnClickListener {
+            generatePassword()
+        }
+        copy_password.setOnClickListener {
+            copyToClipboard(password_result)
+        }
+        copy_password_generated.setOnClickListener {
+            copyToClipboard(password_generated_result)
+        }
 
         password_bits.text = getString(R.string.bits, 0)
 
