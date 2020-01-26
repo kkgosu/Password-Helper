@@ -29,11 +29,11 @@ class MainActivity : Activity(), CompoundButton.OnCheckedChangeListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        
-        passwordHelper = PasswordHelper(ruLetters, enLetters)
-        
+
         ruLetters = resources.getStringArray(R.array.russians)
         enLetters = resources.getStringArray(R.array.latins)
+
+        passwordHelper = PasswordHelper(ruLetters, enLetters)
 
         capsBtn = findViewById(R.id.check_caps)
         symbolsBtn = findViewById(R.id.check_symbols)
@@ -63,7 +63,7 @@ class MainActivity : Activity(), CompoundButton.OnCheckedChangeListener {
         password_input.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 password_result.text = passwordHelper.convert(s)
-                copy_password.isEnabled = true
+                copy_password.isEnabled = s?.length != 0
 
                 val bits: Int = passwordHelper.calculateStrength(password_result.text.toString())
                 password_bits.text = getString(R.string.bits, bits)

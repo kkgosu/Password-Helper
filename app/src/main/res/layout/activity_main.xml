@@ -19,11 +19,40 @@
             android:background="@color/material_blue"
             android:text="@string/convert_password" />
 
-        <fragment
-            class="com.sber.rupassword.PasswordFragment"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="translated" />
+            android:background="@color/material_blue"
+            android:paddingTop="16dp">
+            <TextView
+                android:id="@+id/password_result"
+                style="@style/ResultTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="@dimen/result_margin"
+                android:layout_marginBottom="@dimen/result_margin"
+                android:layout_toStartOf="@id/copy_password" />
+
+            <ImageButton
+                android:id="@+id/copy_password"
+                style="@style/ImageButton"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_content_copy_black_24dp" />
+
+            <ImageView
+                android:id="@+id/password_complexity"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/password_strength_line" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/password_bits"
@@ -56,11 +85,51 @@
             android:background="@color/material_blue"
             android:text="@string/u_can_generate_new_password" />
 
-        <fragment
-            class="com.sber.rupassword.PasswordFragment"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:tag="generated" />
+            android:background="@color/material_blue"
+            android:paddingTop="16dp">
+
+            <TextView
+                android:id="@+id/password_generated_result"
+                style="@style/ResultTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="@dimen/result_margin"
+                android:layout_marginBottom="@dimen/result_margin"
+                android:layout_toStartOf="@id/copy_password_generated" />
+
+            <ImageButton
+                android:id="@+id/copy_password_generated"
+                style="@style/ImageButton"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:layout_toStartOf="@id/regenerate_password"
+                android:src="@drawable/ic_content_copy_black_24dp" />
+
+            <ImageButton
+                android:id="@+id/regenerate_password"
+                style="@style/ImageButton"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_refresh_black_24dp" />
+
+            <ImageView
+                android:id="@+id/password_generated_complexity"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/password_strength_line" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/password_generated_bits"
