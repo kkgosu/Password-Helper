@@ -12,6 +12,14 @@
     <string name="convert_password">Преобразовать пароль</string>
     <string name="translated_tag">translated</string>
     <string name="generated_tag">generated</string>
+    <string name="unlock">Разблокировать</string>
+    <string name="master_password">Мастер-пароль</string>
+    <string name="creating_new_master_password">Создание мастер-пароля для нового хранилища</string>
+    <string name="master_password_desc">Мастер-пароль - это единственный пароль, который вам потребуется запомнить. Запомните его, так как мастер-пароль нигде не хранится и его нельзя восстановить.</string>
+    <string name="new_master_password">Новый мастер-пароль</string>
+    <string name="enter_master_password_again">Введите мастер-пароль еще раз</string>
+    <string name="proceed">Продолжить</string>
+    <string name="cancel">Отмена</string>
 
     <plurals name="symbols_count">
         <item quantity="one">%1$d символ</item>
