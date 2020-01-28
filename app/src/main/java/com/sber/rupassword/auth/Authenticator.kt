@@ -1,4 +1,4 @@
-package com.sber.rupassword.sync
+package com.sber.rupassword.auth
 
 import android.accounts.AbstractAccountAuthenticator
 import android.accounts.Account
@@ -43,7 +43,7 @@ class Authenticator(private val context: Context) : AbstractAccountAuthenticator
     }
 
     companion object {
-        const val ACCOUNT_TYPE = "typeOfAccount"
+        const val ACCOUNT_TYPE = "Пароль"
         const val TOKEN_TYPE = "typeOfAccount_token"
 
         private const val KEY_TOKEN_TYPE = "KEY_TOKEN_TYPE"

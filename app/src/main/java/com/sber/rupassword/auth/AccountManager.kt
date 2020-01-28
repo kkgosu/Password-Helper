@@ -1,4 +1,4 @@
-package com.sber.rupassword.sync
+package com.sber.rupassword.auth
 
 import android.content.Context
 import android.os.*
@@ -6,9 +6,6 @@ import androidx.annotation.RequiresApi
 
 
 private const val TOKEN_KEY = "token"
-private const val RADIUS = "radius"
-private const val FIBRE = "fibre"
-private const val BANDWIDTH = "bandwidth"
 
 class AccountManager(context: Context) {
     private val manager = android.accounts.AccountManager.get(context)
@@ -26,6 +23,9 @@ class AccountManager(context: Context) {
 
             val email = appAccount.name
             val password = manager.getPassword(appAccount)
+
+            println(email)
+            println(password)
 
             val current = Account(email, password)
             if (current != _account) {

@@ -18,17 +18,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".CreateMasterPassword"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".CreateMasterPassword" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MasterPasswordActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MasterPasswordActivity" />
 
-        <service android:name=".sync.AuthenticatorService">
+        <service android:name=".auth.AuthenticatorService">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>

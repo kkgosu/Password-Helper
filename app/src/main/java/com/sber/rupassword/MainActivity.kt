@@ -10,10 +10,9 @@ import android.widget.CompoundButton
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener {
+class MainActivity : BaseActivity(), CompoundButton.OnCheckedChangeListener {
 
     private lateinit var passwordHelper: PasswordHelper
 

@@ -1,4 +1,4 @@
-package com.sber.rupassword.sync
+package com.sber.rupassword.auth
 
 class Account(val userName: String, val password: String) {
     override fun equals(other: Any?): Boolean {

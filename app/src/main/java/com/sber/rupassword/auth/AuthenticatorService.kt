@@ -1,4 +1,4 @@
-package com.sber.rupassword.sync
+package com.sber.rupassword.auth
 
 import android.app.Service
 import android.content.Intent
