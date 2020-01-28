@@ -20,6 +20,7 @@
     <string name="enter_master_password_again">Введите мастер-пароль еще раз</string>
     <string name="proceed">Продолжить</string>
     <string name="cancel">Отмена</string>
+    <string name="label">Password Saver</string>
 
     <plurals name="symbols_count">
         <item quantity="one">%1$d символ</item>
