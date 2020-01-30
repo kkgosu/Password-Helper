@@ -7,7 +7,7 @@ import android.accounts.AccountManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.sber.rupassword.CreateMasterPassword
+import com.sber.rupassword.CreateMasterPasswordActivity
 
 class Authenticator(private val context: Context) : AbstractAccountAuthenticator(context) {
     override fun getAuthTokenLabel(authTokenType: String?): String? = null
@@ -35,7 +35,7 @@ class Authenticator(private val context: Context) : AbstractAccountAuthenticator
             authTokenType: String?, requiredFeatures: Array<out String>?,
             options: Bundle?): Bundle? = Bundle().apply {
         if (AccountManager.get(context).getAccountsByType(ACCOUNT_TYPE).isEmpty()) {
-            val intent = Intent(context, CreateMasterPassword::class.java)
+            val intent = Intent(context, CreateMasterPasswordActivity::class.java)
             intent.putExtra(KEY_TOKEN_TYPE, TOKEN_TYPE)
             intent.putExtra(AccountManager.KEY_ACCOUNT_AUTHENTICATOR_RESPONSE, response)
             putParcelable(AccountManager.KEY_INTENT, intent)

@@ -21,6 +21,10 @@
     <string name="proceed">Продолжить</string>
     <string name="cancel">Отмена</string>
     <string name="label">Password Saver</string>
+    <string name="forgot_master_password"><u>Забыли мастер-пароль?</u></string>
+    <string name="reset_password_desc">К сожалению, мастер-пароль невозможно восстановить в целях безопасности.  Вы можете создать новое хранилище, а все сохраненные данные из предыдущего будут удалены.</string>
+    <string name="reset_password_and_delete">Сбросить мастер-пароль и удалить все данные?</string>
+    <string name="reset_and_delete">Сборосить и удалить</string>
 
     <plurals name="symbols_count">
         <item quantity="one">%1$d символ</item>

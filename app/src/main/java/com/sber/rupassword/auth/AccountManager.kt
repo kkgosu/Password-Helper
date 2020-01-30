@@ -1,5 +1,6 @@
 package com.sber.rupassword.auth
 
+import android.app.Activity
 import android.content.Context
 import android.os.*
 import androidx.annotation.RequiresApi
@@ -24,9 +25,6 @@ class AccountManager(context: Context) {
             val email = appAccount.name
             val password = manager.getPassword(appAccount)
 
-            println(email)
-            println(password)
-
             val current = Account(email, password)
             if (current != _account) {
                 _account = current
@@ -47,14 +45,14 @@ class AccountManager(context: Context) {
             }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
-    fun removeAccount() {
+    fun removeAccount(activity: Activity) {
         val account = current?.androidAccount ?: return
         if (manager.removeAccountExplicitly(account)) {
             _account = null
         } else {
-            manager.removeAccount(account, {
+            manager.removeAccount(account, activity, {
                 try {
-                    if (it.result) {
+                    if (it.isDone) {
                         _account = null
                     }
                 } catch (e: Exception) {

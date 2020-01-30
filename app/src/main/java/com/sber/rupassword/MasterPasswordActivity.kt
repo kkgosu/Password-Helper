@@ -14,18 +14,20 @@ class MasterPasswordActivity : Activity() {
 
         val manager = AccountManager(this)
         if (manager.current == null) {
-            println("BaseActivity.onCreate")
-            startActivity(Intent(this, CreateMasterPassword::class.java))
+            startActivity(Intent(this, CreateMasterPasswordActivity::class.java))
         }
 
         unlock.setOnClickListener {
             manager.apply {
                 if (this.current?.password == master_password_input.text.toString()) {
-                    println("MasterPasswordActivity.onCreate")
                     startActivity(Intent(this@MasterPasswordActivity, MainActivity::class.java))
                     finishAffinity()
                 }
             }
+        }
+
+        forgot_password.setOnClickListener {
+            startActivity(Intent(this, ResetMasterPasswordActivity::class.java))
         }
     }
 }

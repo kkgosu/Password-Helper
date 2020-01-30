@@ -7,7 +7,7 @@ import com.sber.rupassword.auth.Account
 import com.sber.rupassword.auth.AccountManager
 import kotlinx.android.synthetic.main.activity_create_master_password.*
 
-class CreateMasterPassword : Activity() {
+class CreateMasterPasswordActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +21,10 @@ class CreateMasterPassword : Activity() {
                 }
                 startActivity(Intent(this, MasterPasswordActivity::class.java))
             }
+        }
+
+        cancel.setOnClickListener {
+            onBackPressed()
         }
     }
 }
