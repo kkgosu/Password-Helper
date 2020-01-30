@@ -23,6 +23,7 @@ class MasterPasswordActivity : Activity() {
                 if (this.current?.password == master_password_input.text.toString()) {
                     println("MasterPasswordActivity.onCreate")
                     startActivity(Intent(this@MasterPasswordActivity, MainActivity::class.java))
+                    finishAffinity()
                 }
             }
         }
