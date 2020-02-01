@@ -1,6 +1,5 @@
 package com.sber.rupassword
 
-import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -11,9 +10,10 @@ import android.widget.CompoundButton
 import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : Activity(), CompoundButton.OnCheckedChangeListener {
+class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener {
 
     private lateinit var passwordHelper: PasswordHelper
 

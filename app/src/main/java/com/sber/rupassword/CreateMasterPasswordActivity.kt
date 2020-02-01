@@ -1,13 +1,13 @@
 package com.sber.rupassword
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.sber.rupassword.auth.Account
 import com.sber.rupassword.auth.AccountManager
 import kotlinx.android.synthetic.main.activity_create_master_password.*
 
-class CreateMasterPasswordActivity : Activity() {
+class CreateMasterPasswordActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

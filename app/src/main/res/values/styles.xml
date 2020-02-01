@@ -1,10 +1,11 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Material.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:colorAccent">@color/material_blue</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
     </style>
 
     <style name="HeaderTextAppearance">
@@ -55,19 +56,12 @@
         <item name="android:padding">@dimen/copy_button_padding</item>
     </style>
 
-    <style name="Switch">
+    <style name="Switch" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:background">@color/white</item>
         <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">8dp</item>
         <item name="android:textAppearance">@android:style/TextAppearance.Material.Medium</item>
         <item name="android:textColor">@color/grey_800</item>
-    </style>
-
-    <style name="Switch.Horizontal">
-        <item name="android:layout_marginEnd">1dp</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">44dp</item>
-        <item name="android:layout_weight">1</item>
     </style>
 
     <style name="BitsTextAppearance" parent="@android:style/TextAppearance.Material">
