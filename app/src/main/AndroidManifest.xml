@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ResetMasterPasswordActivity"></activity>
+        <activity android:name=".SavedPasswordsActivity"></activity>
+        <activity android:name=".ResetMasterPasswordActivity" />
         <activity android:name=".CreateMasterPasswordActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MasterPasswordActivity">
