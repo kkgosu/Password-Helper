@@ -3,4 +3,5 @@
     <dimen name="result_margin">16dp</dimen>
     <dimen name="copy_button_padding">4dp</dimen>
     <dimen name="corner_radius">2dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

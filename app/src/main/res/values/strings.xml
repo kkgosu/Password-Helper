@@ -104,6 +104,10 @@
         <item>,</item>
         <item>.</item>
     </string-array>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="site_address">Адрес сайта</string>
+    <string name="login">Логин</string>
+    <string name="please_enter_a_password">Создание логина и пароля</string>
 
 
 </resources>

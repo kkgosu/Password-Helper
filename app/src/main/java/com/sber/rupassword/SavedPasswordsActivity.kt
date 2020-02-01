@@ -1,10 +1,10 @@
 package com.sber.rupassword
 
-import android.app.Activity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_saved_passwords.*
 
-class SavedPasswordsActivity : Activity() {
+class SavedPasswordsActivity : AppCompatActivity(), AddPasswordDialog.Listener {
 
     private lateinit var passwordsAdapter: PasswordsAdapter
 
@@ -16,5 +16,12 @@ class SavedPasswordsActivity : Activity() {
         saved_passwords.adapter = passwordsAdapter
         passwordsAdapter.submitList(PasswordPref.getAllPasswords())
 
+        fab.setOnClickListener {
+            AddPasswordDialog().show(supportFragmentManager, "dialog")
+        }
+    }
+
+    override fun onClick(password: Password) {
+        PasswordPref.addAndSavePassword(password)
     }
 }

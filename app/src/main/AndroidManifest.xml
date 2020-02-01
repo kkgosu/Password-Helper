@@ -17,7 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SavedPasswordsActivity"></activity>
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".SavedPasswordsActivity" />
         <activity android:name=".ResetMasterPasswordActivity" />
         <activity android:name=".CreateMasterPasswordActivity" />
         <activity android:name=".MainActivity" />
