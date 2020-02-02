@@ -2,6 +2,7 @@ package com.sber.rupassword
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sber.rupassword.auth.Account
 import com.sber.rupassword.auth.AccountManager
@@ -20,6 +21,9 @@ class CreateMasterPasswordActivity : AppCompatActivity() {
                             "token")
                 }
                 startActivity(Intent(this, MasterPasswordActivity::class.java))
+            } else {
+                Toast.makeText(this, getString(
+                                        R.string.passwords_not_match), Toast.LENGTH_SHORT).show()
             }
         }
 
