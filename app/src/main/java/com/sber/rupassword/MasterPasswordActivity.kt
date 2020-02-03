@@ -25,7 +25,7 @@ class MasterPasswordActivity : AppCompatActivity() {
                     finishAffinity()
                 } else {
                     Toast.makeText(this@MasterPasswordActivity, getString(
-                                                R.string.wrong_master_password),
+                            R.string.wrong_master_password),
                             Toast.LENGTH_SHORT).show()
                 }
             }

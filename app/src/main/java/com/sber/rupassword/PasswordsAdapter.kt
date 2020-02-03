@@ -46,7 +46,8 @@ class PasswordsAdapter(private val interaction: Interaction? = null) :
         return differ.currentList.size
     }
 
-    fun submitList(list: List<Password>?) {
+    fun submitList(list: List<Password>) {
+        println(list)
         differ.submitList(list)
     }
 

@@ -23,5 +23,6 @@ class SavedPasswordsActivity : AppCompatActivity(), AddPasswordDialog.Listener {
 
     override fun onClick(password: Password) {
         PasswordPref.addAndSavePassword(password)
+        passwordsAdapter.submitList(PasswordPref.getAllPasswords())
     }
 }

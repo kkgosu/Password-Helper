@@ -43,26 +43,30 @@ object PasswordPref {
 
     fun addAndSavePassword(password: Password) {
         val allPasswords = getAllPasswords()
-        allPasswords?.let {
-            it.toMutableList().add(password)
-            saveAllPasswords(it)
+        getAllPasswords().toMutableList().add(password)
+        allPasswords.let {
+            val list = it.toMutableList()
+            list.add(password)
+            saveAllPasswords(list.toList())
         }
     }
 
-    fun saveAllPasswords(passwords: List<Password>) {
+    private fun saveAllPasswords(passwords: List<Password>) {
         initializePrefs()
         if (PasswordPref::prefs.isInitialized) {
             val jsonPasswords = Gson().toJson(passwords)
+            println(jsonPasswords)
             prefs.edit().putString("passwords", jsonPasswords).apply()
         }
     }
 
-    fun getAllPasswords(): List<Password>? {
+    fun getAllPasswords(): List<Password> {
         initializePrefs()
         if (PasswordPref::prefs.isInitialized) {
-            val listTye = object : TypeToken<ArrayList<Password>>() {}.type
-            return Gson().fromJson<ArrayList<Password>>(prefs.getString("passwords", ""), listTye)
+            val emptyList = Gson().toJson(ArrayList<Password>())
+            return Gson().fromJson(prefs.getString("passwords", emptyList),
+                    object : TypeToken<ArrayList<Password>>() {}.type)
         }
-        return null
+        return emptyList()
     }
 }

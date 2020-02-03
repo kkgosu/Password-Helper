@@ -3,9 +3,12 @@ package com.sber.rupassword
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.CompoundButton
 import android.widget.SeekBar
 import android.widget.TextView
@@ -29,6 +32,8 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        setSupportActionBar(findViewById(R.id.toolbar1))
 
         ruLetters = resources.getStringArray(R.array.russians)
         enLetters = resources.getStringArray(R.array.latins)
@@ -98,6 +103,20 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
         })
 
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
+            when (item.itemId) {
+                R.id.action_show_saved_passwords -> {
+                    startActivity(Intent(this, SavedPasswordsActivity::class.java))
+                    true
+                }
+                else -> super.onOptionsItemSelected(item)
+            }
 
     override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
         generatePassword()

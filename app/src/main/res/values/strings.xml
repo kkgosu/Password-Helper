@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RuPassword</string>
+    <string name="app_name">Password Helper</string>
     <string name="password">Пароль</string>
     <string name="toast_text_copied">Текст скопирован</string>
     <string name="u_can_generate_new_password">Сгенерировать новый пароль</string>
@@ -110,6 +110,7 @@
     <string name="please_enter_a_password">Создание логина и пароля</string>
     <string name="passwords_not_match">Пароли не совпадают!</string>
     <string name="wrong_master_password">Неверный мастер-пароль!</string>
+    <string name="show_saved_passwords">Show saved passwords</string>
 
 
 </resources>
