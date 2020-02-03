@@ -30,5 +30,6 @@ class CreateMasterPasswordActivity : AppCompatActivity() {
         cancel.setOnClickListener {
             onBackPressed()
         }
+        
     }
 }
