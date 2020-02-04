@@ -22,7 +22,7 @@ class AddPasswordDialog : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val view: View = activity!!.layoutInflater.inflate(R.layout.add_password_dialog, null)
+        val view: View = activity!!.layoutInflater.inflate(R.layout.password_details, null)
         return AlertDialog.Builder(context!!, R.style.MaterialAlertDialog)
                 .setView(view)
                 .setPositiveButton(android.R.string.ok) { _, _ ->

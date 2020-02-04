@@ -50,7 +50,6 @@
     </style>
 
     <style name="Input">
-        <item name="android:background">@drawable/new_input_bg</item>
         <item name="android:imeOptions">flagNoExtractUi</item>
         <item name="android:padding">8dp</item>
         <item name="android:textColor">@color/grey_800</item>
@@ -99,5 +98,17 @@
     <style name="MaterialAlertDialog" parent="Theme.MaterialComponents.Light.Dialog.Alert">
         <item name="android:buttonBarPositiveButtonStyle">@style/AlertDialogButtons</item>
         <item name="android:buttonBarNegativeButtonStyle">@style/AlertDialogButtons</item>
+    </style>
+
+    <style name="HintText" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="InputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:textColorHint">@color/blue_grey_500</item>
+        <item name="hintTextAppearance">@style/HintText</item>
     </style>
 </resources>
