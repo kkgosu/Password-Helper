@@ -9,19 +9,26 @@ object PasswordPref {
     private const val TAG = "Pref"
     private lateinit var prefs: SharedPreferences
 
-    private const val MASTER_PASSWORD = "master-password"
-
     private fun initializePrefs() {
         if (!PasswordPref::prefs.isInitialized) {
             prefs = PreferenceManager.getDefaultSharedPreferences(PasswordApp.getContext())
         }
     }
 
-    fun saveMasterPassword(masterPassword: String) {
-        setString(MASTER_PASSWORD, masterPassword)
+    fun getPassword(alias: String): String? {
+        initializePrefs()
+        if (PasswordPref::prefs.isInitialized) {
+            return prefs.getString(alias, null)
+        }
+        return null
     }
 
-    fun getMasterPassword(): String = getString(MASTER_PASSWORD, "")
+    fun setPassword(alias: String, encryptedValue: String) {
+        initializePrefs()
+        if (PasswordPref::prefs.isInitialized) {
+            prefs.edit().putString(alias, encryptedValue).apply()
+        }
+    }
 
     private fun getString(pref: String, def: String): String {
         initializePrefs()

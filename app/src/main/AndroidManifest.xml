@@ -19,16 +19,18 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".PasswordDetails"></activity>
-        <activity android:name=".SavedPasswordsActivity"></activity>
-        <activity android:name=".ResetMasterPasswordActivity" />
-        <activity android:name=".CreateMasterPasswordActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".MasterPasswordActivity">
+        <activity android:name=".SavedPasswordsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ResetMasterPasswordActivity" />
+        <activity android:name=".CreateMasterPasswordActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MasterPasswordActivity">
+            
         </activity>
 
         <service android:name=".auth.AuthenticatorService">

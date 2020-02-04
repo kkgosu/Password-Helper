@@ -80,17 +80,6 @@ class PasswordHelper {
         return (int) Math.round(entropy);
     }
 
-    public boolean checkMasterPassword(String inputPassword) {
-        if (isMasterPasswordExists()) {
-            return inputPassword.equals(PasswordPref.INSTANCE.getMasterPassword());
-        }
-        return false;
-    }
-
-    public boolean isMasterPasswordExists() {
-        return PasswordPref.INSTANCE.getMasterPassword().equals("");
-    }
-
     private double log2(double n) {
         return (Math.log(n) / Math.log(2));
     }

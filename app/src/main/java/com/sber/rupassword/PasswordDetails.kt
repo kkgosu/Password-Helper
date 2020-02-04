@@ -10,11 +10,15 @@ class PasswordDetails : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_password_dialog)
 
-        val password = intent.getParcelableExtra<Password>("password")
-        password?.let {
-            site_input.setText(it.site)
-            login_input.setText(it.login)
-            password_input.setText(it.password)
+        val decrypt = Decrypt()
+
+        val site = intent.getStringExtra("password_site")
+        val login = intent.getStringExtra("password_login")
+        val alias = "$site,$login"
+        site_input.setText(site)
+        login_input.setText(login)
+        PasswordPref.getPassword(alias)?.let { pass ->
+            password_input.setText(decrypt.decryptData(alias, pass))
         }
 
         site_input.isEnabled = false
