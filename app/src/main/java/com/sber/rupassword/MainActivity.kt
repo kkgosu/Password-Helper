@@ -5,8 +5,6 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.CompoundButton
@@ -14,6 +12,7 @@ import android.widget.SeekBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener {
@@ -65,25 +64,14 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
         setPlurals()
         generatePassword()
 
-        password_input.addTextChangedListener(object : TextWatcher {
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                password_result.text = passwordHelper.convert(s)
-                copy_password.isEnabled = s?.length != 0
+        password_input.doOnTextChanged { text, _, _, _ ->
+            password_result.text = passwordHelper.convert(text)
+            copy_password.isEnabled = text?.length != 0
 
-                val bits: Int = passwordHelper.calculateStrength(password_result.text.toString())
-                password_bits.text = getString(R.string.bits, bits)
-                password_complexity.drawable.level = bits
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                //leave this empty
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                //leave this empty
-            }
-
-        })
+            val bits: Int = passwordHelper.calculateStrength(password_result.text.toString())
+            password_bits.text = getString(R.string.bits, bits)
+            password_complexity.drawable.level = bits
+        }
 
         password_length_seekbar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {

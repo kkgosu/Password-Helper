@@ -14,22 +14,26 @@ class CreateMasterPasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_master_password)
 
+        new_master_password.setError()
+        confirm_new_master_password.setError()
+
         proceed.setOnClickListener {
-            if (new_master_password.text.toString() == confirm_new_master_password.text.toString()) {
+            val password = new_master_password.text?.toStringOrNull()
+            val passwordConfirmed = confirm_new_master_password.text?.toStringOrNull()
+
+            if (password != null && password == passwordConfirmed) {
                 AccountManager(this).apply {
-                    addAccount(Account("userName", confirm_new_master_password.text.toString()),
-                            "token")
+                    addAccount(Account("userName", passwordConfirmed), "token")
                 }
                 startActivity(Intent(this, MasterPasswordActivity::class.java))
             } else {
                 Toast.makeText(this, getString(
-                                        R.string.passwords_not_match), Toast.LENGTH_SHORT).show()
+                        R.string.passwords_not_match), Toast.LENGTH_SHORT).show()
             }
         }
 
         cancel.setOnClickListener {
             onBackPressed()
         }
-        
     }
 }

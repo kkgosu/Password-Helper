@@ -111,6 +111,7 @@
     <string name="passwords_not_match">Пароли не совпадают!</string>
     <string name="wrong_master_password">Неверный мастер-пароль!</string>
     <string name="show_saved_passwords">Show saved passwords</string>
+    <string name="field_must_not_be_empty">Поле не должно быть пустым</string>
 
 
 </resources>

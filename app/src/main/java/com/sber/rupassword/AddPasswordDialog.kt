@@ -4,9 +4,9 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import com.google.android.material.textfield.TextInputEditText
 
 class AddPasswordDialog : DialogFragment() {
 
@@ -23,14 +23,27 @@ class AddPasswordDialog : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view: View = activity!!.layoutInflater.inflate(R.layout.password_details, null)
+
+        val siteInput = view.findViewById<TextInputEditText>(R.id.site_input)
+        val loginInput = view.findViewById<TextInputEditText>(R.id.login_input)
+        val passwordInput = view.findViewById<TextInputEditText>(R.id.password_input)
+
+        siteInput.setError()
+        loginInput.setError()
+        passwordInput.setError()
+
         return AlertDialog.Builder(context!!, R.style.MaterialAlertDialog)
                 .setView(view)
                 .setPositiveButton(android.R.string.ok) { _, _ ->
-                    mListener.onClick(Password(
-                            site = view.findViewById<EditText>(R.id.site_input).text.toString(),
-                            login = view.findViewById<EditText>(R.id.login_input).text.toString(),
-                            password = view.findViewById<EditText>(
-                                    R.id.password_input).text.toString()))
+                    val site = siteInput.text?.toStringOrNull()
+                    val login = loginInput.text?.toStringOrNull()
+                    val password = passwordInput.text?.toStringOrNull()
+                    if (site != null && login != null && password != null) {
+                        mListener.onClick(Password(
+                                site = site,
+                                login = login,
+                                password = password))
+                    }
                 }
                 .setNegativeButton(android.R.string.cancel) { _, _ ->
                     dismiss()
