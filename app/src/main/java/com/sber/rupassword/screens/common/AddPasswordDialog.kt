@@ -4,11 +4,13 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.textfield.TextInputEditText
 import com.sber.rupassword.R
 import com.sber.rupassword.domain.models.Password
+import com.sber.rupassword.utils.copyToClipboard
 import com.sber.rupassword.utils.setError
 import com.sber.rupassword.utils.toStringOrNull
 
@@ -39,6 +41,14 @@ class AddPasswordDialog : DialogFragment() {
         siteInput.setError()
         loginInput.setError()
         passwordInput.setError()
+
+        view.findViewById<ImageButton>(R.id.copy_login).setOnClickListener {
+            copyToClipboard(requireContext(), loginInput)
+        }
+
+        view.findViewById<ImageButton>(R.id.copy_password).setOnClickListener {
+            copyToClipboard(requireContext(), passwordInput)
+        }
 
         return AlertDialog.Builder(context!!,
                 R.style.MaterialAlertDialog)

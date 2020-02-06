@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import com.sber.rupassword.R
 import com.sber.rupassword.domain.IMainContract
-import com.sber.rupassword.screens.SavedPasswordsActivity
+import com.sber.rupassword.screens.savedpasswords.SavedPasswordsActivity
 import com.sber.rupassword.utils.copyToClipboard
 import kotlinx.android.synthetic.main.activity_main.*
 

@@ -6,9 +6,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sber.rupassword.R
 import com.sber.rupassword.domain.IMasterPasswordContract
-import com.sber.rupassword.screens.ResetMasterPasswordActivity
 import com.sber.rupassword.screens.createmasterpassword.CreateMasterPasswordActivity
 import com.sber.rupassword.screens.main.MainActivity
+import com.sber.rupassword.screens.resetmasterpassword.ResetMasterPasswordActivity
 import kotlinx.android.synthetic.main.activity_master_password.*
 
 class MasterPasswordActivity() : AppCompatActivity(), IMasterPasswordContract.View {

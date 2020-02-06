@@ -6,12 +6,16 @@ import android.os.*
 import androidx.annotation.RequiresApi
 import com.sber.rupassword.domain.ICreateMasterPasswordContract
 import com.sber.rupassword.domain.IMasterPasswordContract
+import com.sber.rupassword.domain.IResetMasterPasswordContract
 
 
 private const val TOKEN_KEY = "token"
 
 class AccountManager(
-        context: Context) : IMasterPasswordContract.Repository, ICreateMasterPasswordContract.Repository {
+        context: Context) :
+        IMasterPasswordContract.Repository,
+        ICreateMasterPasswordContract.Repository,
+        IResetMasterPasswordContract.Repository {
     private val manager = android.accounts.AccountManager.get(context)
     private val handler = Handler(
             HandlerThread(AccountManager::class.java.simpleName,
@@ -50,7 +54,7 @@ class AccountManager(
             }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
-    fun removeAccount(activity: Activity) {
+    override fun removeAccount(activity: Activity) {
         val account = current?.androidAccount ?: return
         if (manager.removeAccountExplicitly(account)) {
             _account = null

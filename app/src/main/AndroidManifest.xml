@@ -18,10 +18,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".screens.PasswordDetailsActivity"></activity>
-        <activity android:name=".screens.SavedPasswordsActivity">
+        <activity android:name=".screens.passworddetails.PasswordDetailsActivity"></activity>
+        <activity android:name=".screens.savedpasswords.SavedPasswordsActivity">
         </activity>
-        <activity android:name=".screens.ResetMasterPasswordActivity" />
+        <activity android:name=".screens.resetmasterpassword.ResetMasterPasswordActivity" />
         <activity android:name=".screens.createmasterpassword.CreateMasterPasswordActivity" />
         <activity android:name=".screens.main.MainActivity" />
         <activity android:name=".screens.masterpassword.MasterPasswordActivity">
