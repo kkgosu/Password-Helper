@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sber.rupassword.R
-import com.sber.rupassword.auth.AccountManager
-import com.sber.rupassword.domain.PasswordPref
+import com.sber.rupassword.repository.PasswordPref
+import com.sber.rupassword.repository.auth.AccountManager
 import kotlinx.android.synthetic.main.activity_reset_master_password.*
 
 class ResetMasterPasswordActivity : AppCompatActivity() {

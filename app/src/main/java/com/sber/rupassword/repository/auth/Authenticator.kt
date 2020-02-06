@@ -1,4 +1,4 @@
-package com.sber.rupassword.auth
+package com.sber.rupassword.repository.auth
 
 import android.accounts.AbstractAccountAuthenticator
 import android.accounts.Account

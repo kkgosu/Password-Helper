@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sber.rupassword.R
 import com.sber.rupassword.domain.Decrypt
-import com.sber.rupassword.domain.PasswordPref
+import com.sber.rupassword.repository.PasswordPref
 import com.sber.rupassword.utils.copyToClipboard
 import kotlinx.android.synthetic.main.password_details.*
 

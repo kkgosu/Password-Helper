@@ -8,7 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.textfield.TextInputEditText
 import com.sber.rupassword.R
-import com.sber.rupassword.models.Password
+import com.sber.rupassword.domain.models.Password
 import com.sber.rupassword.utils.setError
 import com.sber.rupassword.utils.toStringOrNull
 

@@ -5,35 +5,50 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sber.rupassword.R
-import com.sber.rupassword.auth.AccountManager
+import com.sber.rupassword.domain.IMasterPasswordContract
 import kotlinx.android.synthetic.main.activity_master_password.*
 
-class MasterPasswordActivity : AppCompatActivity() {
+class MasterPasswordActivity() : AppCompatActivity(), IMasterPasswordContract.View {
+
+    private lateinit var presenter: MasterPasswordPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_master_password)
 
-        val manager = AccountManager(this)
-        if (manager.current == null) {
-            startActivity(Intent(this, CreateMasterPasswordActivity::class.java))
-        }
+        presenter = MasterPasswordPresenter(this)
 
         unlock.setOnClickListener {
-            manager.apply {
-                if (this.current?.password == master_password_input.text.toString()) {
-                    startActivity(Intent(this@MasterPasswordActivity, MainActivity::class.java))
-                    finishAffinity()
-                } else {
-                    Toast.makeText(this@MasterPasswordActivity, getString(
-                            R.string.wrong_master_password),
-                            Toast.LENGTH_SHORT).show()
-                }
-            }
+            presenter.onNextClicked(master_password_input.text.toString())
         }
 
         forgot_password.setOnClickListener {
-            startActivity(Intent(this, ResetMasterPasswordActivity::class.java))
+            presenter.onForgotPasswordClicked()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }
+
+    override fun startMainActivity() {
+        startActivity(Intent(this@MasterPasswordActivity, MainActivity::class.java))
+        finishAffinity()
+    }
+
+    override fun startCreateMasterPasswordActivity() {
+        startActivity(Intent(this, CreateMasterPasswordActivity::class.java))
+        finishAffinity()
+    }
+
+    override fun startForgotPasswordActivity() {
+        startActivity(Intent(this, ResetMasterPasswordActivity::class.java))
+    }
+
+    override fun showMessage() {
+        Toast.makeText(this@MasterPasswordActivity, getString(
+                R.string.wrong_master_password),
+                Toast.LENGTH_SHORT).show()
     }
 }

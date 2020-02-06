@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.sber.rupassword.R
-import com.sber.rupassword.models.Password
+import com.sber.rupassword.domain.models.Password
 import kotlinx.android.synthetic.main.saved_password.view.*
 
 class PasswordsAdapter(private val interaction: Interaction? = null) :

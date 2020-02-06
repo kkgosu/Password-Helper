@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".auth.AuthenticatorService">
+        <service android:name="com.sber.rupassword.repository.auth.AuthenticatorService">
             <intent-filter>
                 <action android:name="android.accounts.AccountAuthenticator" />
             </intent-filter>

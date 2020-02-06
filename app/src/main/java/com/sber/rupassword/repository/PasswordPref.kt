@@ -1,11 +1,11 @@
-package com.sber.rupassword.domain
+package com.sber.rupassword.repository
 
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.sber.rupassword.PasswordApp
-import com.sber.rupassword.models.Password
+import com.sber.rupassword.domain.models.Password
 
 object PasswordPref {
     private const val TAG = "Pref"
@@ -60,7 +60,8 @@ object PasswordPref {
 
     fun addAndSavePassword(password: Password) {
         val allPasswords = getAllPasswords()
-        getAllPasswords().toMutableList().add(password)
+        getAllPasswords()
+                .toMutableList().add(password)
         allPasswords.let {
             val list = it.toMutableList()
             list.add(password)

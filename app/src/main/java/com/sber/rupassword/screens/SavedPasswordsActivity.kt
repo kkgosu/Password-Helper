@@ -5,8 +5,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.sber.rupassword.R
 import com.sber.rupassword.domain.Encrypt
-import com.sber.rupassword.domain.PasswordPref
-import com.sber.rupassword.models.Password
+import com.sber.rupassword.domain.models.Password
+import com.sber.rupassword.repository.PasswordPref
 import com.sber.rupassword.screens.common.AddPasswordDialog
 import com.sber.rupassword.screens.common.PasswordsAdapter
 import kotlinx.android.synthetic.main.activity_saved_passwords.*

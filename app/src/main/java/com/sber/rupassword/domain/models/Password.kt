@@ -1,4 +1,4 @@
-package com.sber.rupassword.models
+package com.sber.rupassword.domain.models
 
 import android.os.Parcel
 import android.os.Parcelable

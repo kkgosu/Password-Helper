@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sber.rupassword.R
-import com.sber.rupassword.auth.Account
-import com.sber.rupassword.auth.AccountManager
+import com.sber.rupassword.repository.auth.Account
+import com.sber.rupassword.repository.auth.AccountManager
 import com.sber.rupassword.utils.setError
 import com.sber.rupassword.utils.toStringOrNull
 import kotlinx.android.synthetic.main.activity_create_master_password.*

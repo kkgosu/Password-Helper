@@ -1,14 +1,15 @@
-package com.sber.rupassword.auth
+package com.sber.rupassword.repository.auth
 
 import android.app.Activity
 import android.content.Context
 import android.os.*
 import androidx.annotation.RequiresApi
+import com.sber.rupassword.domain.IMasterPasswordContract
 
 
 private const val TOKEN_KEY = "token"
 
-class AccountManager(context: Context) {
+class AccountManager(context: Context) : IMasterPasswordContract.Repository {
     private val manager = android.accounts.AccountManager.get(context)
     private val handler = Handler(
             HandlerThread(AccountManager::class.java.simpleName,
@@ -17,7 +18,7 @@ class AccountManager(context: Context) {
                 start()
             }.looper)
     private var _account: Account? = null
-    val current: Account?
+    private val current: Account?
         get() {
             val accounts = manager.getAccountsByType(Authenticator.ACCOUNT_TYPE)
             val appAccount = accounts.lastOrNull() ?: return _account
@@ -61,6 +62,8 @@ class AccountManager(context: Context) {
             }, handler)
         }
     }
+
+    override fun getAccount(): Account? = current
 }
 
 private val Account.androidAccount
