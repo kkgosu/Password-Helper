@@ -26,10 +26,6 @@ class MasterPasswordPresenter(
         }
     }
 
-    override fun onForgotPasswordClicked() {
-        view?.startForgotPasswordActivity()
-    }
-
     override fun onDestroy() {
         view = null
     }

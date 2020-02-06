@@ -11,7 +11,6 @@ interface IMasterPasswordContract {
 
     interface Presenter {
         fun onNextClicked(inputPassword: String)
-        fun onForgotPasswordClicked()
         fun onDestroy()
     }
 

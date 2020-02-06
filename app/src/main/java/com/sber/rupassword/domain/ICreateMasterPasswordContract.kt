@@ -10,7 +10,6 @@ interface ICreateMasterPasswordContract {
 
     interface Presenter {
         fun onNextClicked(password1: String?, password2: String?)
-        fun onBackClicked()
         fun onDestroy()
     }
 

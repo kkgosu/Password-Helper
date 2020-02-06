@@ -19,10 +19,6 @@ class CreateMasterPasswordPresenter(
         }
     }
 
-    override fun onBackClicked() {
-        view?.onBackClicked()
-    }
-
     override fun onDestroy() {
         view = null
     }
