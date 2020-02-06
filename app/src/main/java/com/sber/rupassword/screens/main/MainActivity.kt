@@ -1,4 +1,4 @@
-package com.sber.rupassword.screens
+package com.sber.rupassword.screens.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,16 +9,14 @@ import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import com.sber.rupassword.R
-import com.sber.rupassword.domain.PasswordHelper
+import com.sber.rupassword.domain.IMainContract
+import com.sber.rupassword.screens.SavedPasswordsActivity
 import com.sber.rupassword.utils.copyToClipboard
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener {
+class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener, IMainContract.View {
 
-    private lateinit var passwordHelper: PasswordHelper
-
-    private lateinit var ruLetters: Array<String>
-    private lateinit var enLetters: Array<String>
+    private lateinit var presenter: MainPresenter
 
     private var symbolsQuantity = MIN_QUANTITY
 
@@ -29,15 +27,13 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         setSupportActionBar(findViewById(R.id.toolbar1))
 
-        ruLetters = resources.getStringArray(
-                R.array.russians)
-        enLetters = resources.getStringArray(R.array.latins)
+        val ruLetters = resources.getStringArray(R.array.russians)
+        val enLetters = resources.getStringArray(R.array.latins)
 
-        passwordHelper = PasswordHelper(ruLetters,
-                enLetters)
+        presenter = MainPresenter(this)
+        presenter.initPasswordHelper(ruLetters, enLetters)
 
         capsBtn = findViewById(R.id.check_caps)
         symbolsBtn = findViewById(R.id.check_symbols)
@@ -56,8 +52,7 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
             copyToClipboard(this, password_result)
         }
         copy_password_generated.setOnClickListener {
-            copyToClipboard(this,
-                    password_generated_result)
+            copyToClipboard(this, password_generated_result)
         }
 
         password_bits.text = getString(R.string.bits, 0)
@@ -66,10 +61,10 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
         generatePassword()
 
         password_input.doOnTextChanged { text, _, _, _ ->
-            password_result.text = passwordHelper.convert(text)
+            password_result.text = presenter.convert(text)
             copy_password.isEnabled = text?.length != 0
 
-            val bits: Int = passwordHelper.calculateStrength(password_result.text.toString())
+            val bits: Int = presenter.calculateStrength(password_result.text.toString())
             password_bits.text = getString(R.string.bits, bits)
             password_complexity.drawable.level = bits
         }
@@ -111,11 +106,16 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
         generatePassword()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }
+
     private fun generatePassword() {
-        password_generated_result.text = passwordHelper.generatePassword(symbolsQuantity,
+        password_generated_result.text = presenter.generatePassword(symbolsQuantity,
                 check_caps.isChecked, check_symbols.isChecked, check_numbers.isChecked)
 
-        val bits = passwordHelper.calculateStrength(password_generated_result.text.toString())
+        val bits = presenter.calculateStrength(password_generated_result.text.toString())
         password_generated_bits.text = getString(
                 R.string.bits, bits)
         password_generated_complexity.drawable.level = bits

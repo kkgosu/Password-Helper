@@ -1,4 +1,6 @@
-package com.sber.rupassword.domain;
+package com.sber.rupassword.repository;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,6 +34,7 @@ public class PasswordHelper {
         }
     }
 
+    @NotNull
     public String convert(CharSequence input) {
         StringBuilder result = new StringBuilder();
         List<String> russians = Arrays.asList(mRussians);
@@ -48,6 +51,7 @@ public class PasswordHelper {
         return result.toString();
     }
 
+    @NotNull
     public String generatePassword(int length, boolean caps, boolean symbols, boolean numbers) {
         StringBuilder resultPassword = new StringBuilder();
         StringBuilder dictionary = new StringBuilder(ENG_LETTERS);
@@ -65,7 +69,7 @@ public class PasswordHelper {
         return resultPassword.toString();
     }
 
-    public int calculateStrength(String password) {
+    public int calculateStrength(@NotNull String password) {
         StringBuilder builder = new StringBuilder();
         if (Pattern.matches(".*\\d+.*", password))
             builder.append(NUMBERS);

@@ -6,7 +6,6 @@ interface IMasterPasswordContract {
     interface View {
         fun showMessage()
         fun startCreateMasterPasswordActivity()
-        fun startForgotPasswordActivity()
         fun startMainActivity()
     }
 

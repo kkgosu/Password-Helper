@@ -5,7 +5,6 @@ import com.sber.rupassword.repository.auth.Account
 interface ICreateMasterPasswordContract {
     interface View {
         fun startMasterPasswordActivity()
-        fun onBackClicked()
         fun showMessage()
     }
 

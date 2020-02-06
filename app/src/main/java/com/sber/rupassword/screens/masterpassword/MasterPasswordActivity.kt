@@ -6,9 +6,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sber.rupassword.R
 import com.sber.rupassword.domain.IMasterPasswordContract
-import com.sber.rupassword.screens.MainActivity
 import com.sber.rupassword.screens.ResetMasterPasswordActivity
 import com.sber.rupassword.screens.createmasterpassword.CreateMasterPasswordActivity
+import com.sber.rupassword.screens.main.MainActivity
 import kotlinx.android.synthetic.main.activity_master_password.*
 
 class MasterPasswordActivity() : AppCompatActivity(), IMasterPasswordContract.View {
@@ -27,7 +27,7 @@ class MasterPasswordActivity() : AppCompatActivity(), IMasterPasswordContract.Vi
         }
 
         forgot_password.setOnClickListener {
-            presenter.onForgotPasswordClicked()
+            startActivity(Intent(this, ResetMasterPasswordActivity::class.java))
         }
     }
 
@@ -44,10 +44,6 @@ class MasterPasswordActivity() : AppCompatActivity(), IMasterPasswordContract.Vi
     override fun startCreateMasterPasswordActivity() {
         startActivity(Intent(this, CreateMasterPasswordActivity::class.java))
         finishAffinity()
-    }
-
-    override fun startForgotPasswordActivity() {
-        startActivity(Intent(this, ResetMasterPasswordActivity::class.java))
     }
 
     override fun showMessage() {

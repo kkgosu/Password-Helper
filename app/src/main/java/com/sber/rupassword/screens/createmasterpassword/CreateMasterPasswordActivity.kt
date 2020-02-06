@@ -32,17 +32,13 @@ class CreateMasterPasswordActivity : AppCompatActivity(), ICreateMasterPasswordC
         }
 
         cancel.setOnClickListener {
-            presenter.onBackClicked()
+            onBackPressed()
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         presenter.onDestroy()
-    }
-
-    override fun onBackClicked() {
-        onBackPressed()
     }
 
     override fun startMasterPasswordActivity() {
