@@ -62,6 +62,7 @@ class PasswordsAdapter(private val interaction: Interaction? = null) :
                 interaction?.onItemSelected(adapterPosition, item)
             }
             site_name.text = item.site
+            login.text = item.login
         }
     }
 

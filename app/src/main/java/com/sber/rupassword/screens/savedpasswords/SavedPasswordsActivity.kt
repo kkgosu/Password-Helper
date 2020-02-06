@@ -3,6 +3,7 @@ package com.sber.rupassword.screens.savedpasswords
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.sber.rupassword.R
 import com.sber.rupassword.domain.ISavedPasswordsContract
 import com.sber.rupassword.domain.models.Password
@@ -23,7 +24,10 @@ class SavedPasswordsActivity : AppCompatActivity(), AddPasswordDialog.Listener, 
 
         presenter = SavedPasswordsPresenter(this)
         passwordsAdapter = PasswordsAdapter(this)
+        val divider = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        divider.setDrawable(getDrawable(R.drawable.divider)!!)
         saved_passwords.adapter = passwordsAdapter
+        saved_passwords.addItemDecoration(divider)
         passwordsAdapter.submitList(PasswordPref.getAllPasswords())
 
         fab.setOnClickListener {

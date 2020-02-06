@@ -19,12 +19,17 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".screens.passworddetails.PasswordDetailsActivity"></activity>
-        <activity android:name=".screens.savedpasswords.SavedPasswordsActivity">
-        </activity>
+        <activity android:name=".screens.savedpasswords.SavedPasswordsActivity"></activity>
         <activity android:name=".screens.resetmasterpassword.ResetMasterPasswordActivity" />
-        <activity android:name=".screens.createmasterpassword.CreateMasterPasswordActivity" />
-        <activity android:name=".screens.main.MainActivity" />
-        <activity android:name=".screens.masterpassword.MasterPasswordActivity">
+        <activity
+            android:name=".screens.createmasterpassword.CreateMasterPasswordActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".screens.main.MainActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".screens.masterpassword.MasterPasswordActivity"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
