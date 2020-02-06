@@ -22,9 +22,9 @@
         <activity android:name=".screens.SavedPasswordsActivity">
         </activity>
         <activity android:name=".screens.ResetMasterPasswordActivity" />
-        <activity android:name=".screens.CreateMasterPasswordActivity" />
+        <activity android:name=".screens.createmasterpassword.CreateMasterPasswordActivity" />
         <activity android:name=".screens.MainActivity" />
-        <activity android:name=".screens.MasterPasswordActivity">
+        <activity android:name=".screens.masterpassword.MasterPasswordActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

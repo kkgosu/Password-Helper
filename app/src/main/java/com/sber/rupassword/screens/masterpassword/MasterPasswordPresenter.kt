@@ -1,4 +1,4 @@
-package com.sber.rupassword.screens
+package com.sber.rupassword.screens.masterpassword
 
 import com.sber.rupassword.domain.IMasterPasswordContract
 import com.sber.rupassword.repository.auth.AccountManager

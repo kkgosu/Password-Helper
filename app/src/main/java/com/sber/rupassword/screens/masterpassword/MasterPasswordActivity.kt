@@ -1,4 +1,4 @@
-package com.sber.rupassword.screens
+package com.sber.rupassword.screens.masterpassword
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sber.rupassword.R
 import com.sber.rupassword.domain.IMasterPasswordContract
+import com.sber.rupassword.screens.MainActivity
+import com.sber.rupassword.screens.ResetMasterPasswordActivity
+import com.sber.rupassword.screens.createmasterpassword.CreateMasterPasswordActivity
 import kotlinx.android.synthetic.main.activity_master_password.*
 
 class MasterPasswordActivity() : AppCompatActivity(), IMasterPasswordContract.View {
@@ -16,7 +19,8 @@ class MasterPasswordActivity() : AppCompatActivity(), IMasterPasswordContract.Vi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_master_password)
 
-        presenter = MasterPasswordPresenter(this)
+        presenter = MasterPasswordPresenter(
+                this)
 
         unlock.setOnClickListener {
             presenter.onNextClicked(master_password_input.text.toString())

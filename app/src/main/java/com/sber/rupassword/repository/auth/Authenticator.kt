@@ -7,7 +7,7 @@ import android.accounts.AccountManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.sber.rupassword.screens.CreateMasterPasswordActivity
+import com.sber.rupassword.screens.createmasterpassword.CreateMasterPasswordActivity
 
 class Authenticator(private val context: Context) : AbstractAccountAuthenticator(context) {
     override fun getAuthTokenLabel(authTokenType: String?): String? = null

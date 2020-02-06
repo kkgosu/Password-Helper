@@ -4,12 +4,14 @@ import android.app.Activity
 import android.content.Context
 import android.os.*
 import androidx.annotation.RequiresApi
+import com.sber.rupassword.domain.ICreateMasterPasswordContract
 import com.sber.rupassword.domain.IMasterPasswordContract
 
 
 private const val TOKEN_KEY = "token"
 
-class AccountManager(context: Context) : IMasterPasswordContract.Repository {
+class AccountManager(
+        context: Context) : IMasterPasswordContract.Repository, ICreateMasterPasswordContract.Repository {
     private val manager = android.accounts.AccountManager.get(context)
     private val handler = Handler(
             HandlerThread(AccountManager::class.java.simpleName,
@@ -34,7 +36,9 @@ class AccountManager(context: Context) : IMasterPasswordContract.Repository {
             return _account
         }
 
-    fun addAccount(account: Account, token: String) {
+    override fun getAccount(): Account? = current
+
+    override fun addAccount(account: Account, token: String) {
         val bundle = Bundle()
         bundle.putString(TOKEN_KEY, token)
         manager.addAccountExplicitly(account.androidAccount, account.password, bundle)
@@ -62,8 +66,6 @@ class AccountManager(context: Context) : IMasterPasswordContract.Repository {
             }, handler)
         }
     }
-
-    override fun getAccount(): Account? = current
 }
 
 private val Account.androidAccount
