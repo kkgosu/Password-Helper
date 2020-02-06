@@ -1,9 +1,11 @@
-package com.sber.rupassword
+package com.sber.rupassword.domain
 
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.sber.rupassword.PasswordApp
+import com.sber.rupassword.models.Password
 
 object PasswordPref {
     private const val TAG = "Pref"
@@ -11,7 +13,8 @@ object PasswordPref {
 
     private fun initializePrefs() {
         if (!PasswordPref::prefs.isInitialized) {
-            prefs = PreferenceManager.getDefaultSharedPreferences(PasswordApp.getContext())
+            prefs = PreferenceManager.getDefaultSharedPreferences(
+                    PasswordApp.getContext())
         }
     }
 
@@ -27,6 +30,13 @@ object PasswordPref {
         initializePrefs()
         if (PasswordPref::prefs.isInitialized) {
             prefs.edit().putString(alias, encryptedValue).apply()
+        }
+    }
+
+    fun deleteAllPasswords() {
+        initializePrefs()
+        if (PasswordPref::prefs.isInitialized) {
+            prefs.edit().clear().apply()
         }
     }
 
@@ -54,7 +64,8 @@ object PasswordPref {
         allPasswords.let {
             val list = it.toMutableList()
             list.add(password)
-            saveAllPasswords(list.toList())
+            saveAllPasswords(
+                    list.toList())
         }
     }
 
@@ -71,7 +82,8 @@ object PasswordPref {
         initializePrefs()
         if (PasswordPref::prefs.isInitialized) {
             val emptyList = Gson().toJson(ArrayList<Password>())
-            return Gson().fromJson(prefs.getString("passwords", emptyList),
+            return Gson().fromJson(
+                    prefs.getString("passwords", emptyList),
                     object : TypeToken<ArrayList<Password>>() {}.type)
         }
         return emptyList()

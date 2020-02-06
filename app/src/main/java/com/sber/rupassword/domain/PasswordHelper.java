@@ -1,11 +1,11 @@
-package com.sber.rupassword;
+package com.sber.rupassword.domain;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.regex.Pattern;
 
-class PasswordHelper {
+public class PasswordHelper {
     private final String[] mRussians;
     private final String[] mLatins;
 

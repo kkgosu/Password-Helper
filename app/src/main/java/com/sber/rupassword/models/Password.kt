@@ -1,4 +1,4 @@
-package com.sber.rupassword
+package com.sber.rupassword.models
 
 import android.os.Parcel
 import android.os.Parcelable

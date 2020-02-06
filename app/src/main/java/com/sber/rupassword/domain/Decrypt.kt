@@ -1,4 +1,4 @@
-package com.sber.rupassword
+package com.sber.rupassword.domain
 
 import android.util.Base64
 import java.security.KeyStore
@@ -11,7 +11,8 @@ class Decrypt {
     private var keyStore: KeyStore
 
     init {
-        keyStore = KeyStore.getInstance(ANDROID_KEY_STORE)
+        keyStore = KeyStore.getInstance(
+                ANDROID_KEY_STORE)
         keyStore.load(null)
     }
 
@@ -19,7 +20,8 @@ class Decrypt {
         val parts = decryptString.split(",")
         val encrypted = Base64.decode(parts[0], Base64.DEFAULT)
         val iv = Base64.decode(parts[1], Base64.DEFAULT)
-        val cipher = Cipher.getInstance(TRANSFORMATION)
+        val cipher = Cipher.getInstance(
+                TRANSFORMATION)
         val spec = IvParameterSpec(iv)
         cipher.init(Cipher.DECRYPT_MODE, getSecretKey(alias), spec)
 

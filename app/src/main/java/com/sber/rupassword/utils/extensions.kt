@@ -1,4 +1,4 @@
-package com.sber.rupassword
+package com.sber.rupassword.utils
 
 import android.text.Editable
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewParent
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.sber.rupassword.R
 
 fun Editable.toStringOrNull(): String? {
     val str = toString().trim()

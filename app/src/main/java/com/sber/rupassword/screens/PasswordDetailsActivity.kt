@@ -1,15 +1,14 @@
-package com.sber.rupassword
+package com.sber.rupassword.screens
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
 import android.os.Bundle
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.sber.rupassword.R
+import com.sber.rupassword.domain.Decrypt
+import com.sber.rupassword.domain.PasswordPref
+import com.sber.rupassword.utils.copyToClipboard
 import kotlinx.android.synthetic.main.password_details.*
 
-class PasswordDetails : AppCompatActivity() {
+class PasswordDetailsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +27,11 @@ class PasswordDetails : AppCompatActivity() {
         }
 
         copy_login.setOnClickListener {
-            copyToClipboard(login_input)
+            copyToClipboard(this, login_input)
         }
 
         copy_password.setOnClickListener {
-            copyToClipboard(password_input)
+            copyToClipboard(this, password_input)
         }
 
         site_input.isEnabled = false
@@ -41,15 +40,5 @@ class PasswordDetails : AppCompatActivity() {
         login_input.isFocusable = false
         password_input.isEnabled = false
         password_input.isFocusable = false
-    }
-
-    private fun copyToClipboard(password: TextView) {
-        val manager: ClipboardManager =
-                getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        manager.let {
-            it.setPrimaryClip(
-                    ClipData.newPlainText(getString(R.string.password), password.text.toString()))
-            Toast.makeText(this, R.string.toast_text_copied, Toast.LENGTH_SHORT).show()
-        }
     }
 }

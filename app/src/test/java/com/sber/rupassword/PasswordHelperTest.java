@@ -1,5 +1,7 @@
 package com.sber.rupassword;
 
+import com.sber.rupassword.domain.PasswordHelper;
+
 import org.junit.Before;
 import org.junit.Test;
 

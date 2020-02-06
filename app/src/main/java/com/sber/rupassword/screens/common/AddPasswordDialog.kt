@@ -1,4 +1,4 @@
-package com.sber.rupassword
+package com.sber.rupassword.screens.common
 
 import android.app.Dialog
 import android.content.Context
@@ -7,6 +7,10 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.textfield.TextInputEditText
+import com.sber.rupassword.R
+import com.sber.rupassword.models.Password
+import com.sber.rupassword.utils.setError
+import com.sber.rupassword.utils.toStringOrNull
 
 class AddPasswordDialog : DialogFragment() {
 
@@ -22,17 +26,22 @@ class AddPasswordDialog : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val view: View = activity!!.layoutInflater.inflate(R.layout.password_details, null)
+        val view: View = activity!!.layoutInflater.inflate(
+                R.layout.password_details, null)
 
-        val siteInput = view.findViewById<TextInputEditText>(R.id.site_input)
-        val loginInput = view.findViewById<TextInputEditText>(R.id.login_input)
-        val passwordInput = view.findViewById<TextInputEditText>(R.id.password_input)
+        val siteInput = view.findViewById<TextInputEditText>(
+                R.id.site_input)
+        val loginInput = view.findViewById<TextInputEditText>(
+                R.id.login_input)
+        val passwordInput = view.findViewById<TextInputEditText>(
+                R.id.password_input)
 
         siteInput.setError()
         loginInput.setError()
         passwordInput.setError()
 
-        return AlertDialog.Builder(context!!, R.style.MaterialAlertDialog)
+        return AlertDialog.Builder(context!!,
+                R.style.MaterialAlertDialog)
                 .setView(view)
                 .setPositiveButton(android.R.string.ok) { _, _ ->
                     val site = siteInput.text?.toStringOrNull()

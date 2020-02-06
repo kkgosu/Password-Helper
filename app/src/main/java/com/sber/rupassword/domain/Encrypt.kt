@@ -1,4 +1,4 @@
-package com.sber.rupassword
+package com.sber.rupassword.domain
 
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
@@ -12,7 +12,8 @@ class Encrypt {
     private lateinit var iv: ByteArray
 
     fun encryptText(alias: String, textToEncrypt: String): String {
-        val cipher = Cipher.getInstance(TRANSFORMATION)
+        val cipher = Cipher.getInstance(
+                TRANSFORMATION)
         cipher.init(Cipher.ENCRYPT_MODE, getSecretKey(alias))
         encryption = cipher.doFinal(textToEncrypt.toByteArray())
         iv = cipher.iv

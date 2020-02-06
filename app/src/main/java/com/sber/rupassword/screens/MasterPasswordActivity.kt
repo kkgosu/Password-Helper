@@ -1,9 +1,10 @@
-package com.sber.rupassword
+package com.sber.rupassword.screens
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.sber.rupassword.R
 import com.sber.rupassword.auth.AccountManager
 import kotlinx.android.synthetic.main.activity_master_password.*
 

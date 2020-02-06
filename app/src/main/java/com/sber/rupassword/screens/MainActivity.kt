@@ -1,18 +1,16 @@
-package com.sber.rupassword
+package com.sber.rupassword.screens
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.CompoundButton
 import android.widget.SeekBar
-import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
+import com.sber.rupassword.R
+import com.sber.rupassword.domain.PasswordHelper
+import com.sber.rupassword.utils.copyToClipboard
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener {
@@ -34,10 +32,12 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
 
         setSupportActionBar(findViewById(R.id.toolbar1))
 
-        ruLetters = resources.getStringArray(R.array.russians)
+        ruLetters = resources.getStringArray(
+                R.array.russians)
         enLetters = resources.getStringArray(R.array.latins)
 
-        passwordHelper = PasswordHelper(ruLetters, enLetters)
+        passwordHelper = PasswordHelper(ruLetters,
+                enLetters)
 
         capsBtn = findViewById(R.id.check_caps)
         symbolsBtn = findViewById(R.id.check_symbols)
@@ -53,10 +53,11 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
             generatePassword()
         }
         copy_password.setOnClickListener {
-            copyToClipboard(password_result)
+            copyToClipboard(this, password_result)
         }
         copy_password_generated.setOnClickListener {
-            copyToClipboard(password_generated_result)
+            copyToClipboard(this,
+                    password_generated_result)
         }
 
         password_bits.text = getString(R.string.bits, 0)
@@ -115,24 +116,16 @@ class MainActivity : AppCompatActivity(), CompoundButton.OnCheckedChangeListener
                 check_caps.isChecked, check_symbols.isChecked, check_numbers.isChecked)
 
         val bits = passwordHelper.calculateStrength(password_generated_result.text.toString())
-        password_generated_bits.text = getString(R.string.bits, bits)
+        password_generated_bits.text = getString(
+                R.string.bits, bits)
         password_generated_complexity.drawable.level = bits
     }
 
     private fun setPlurals() {
-        val symbols: String = resources.getQuantityString(R.plurals.symbols_count, symbolsQuantity,
+        val symbols: String = resources.getQuantityString(
+                R.plurals.symbols_count, symbolsQuantity,
                 symbolsQuantity)
         password_length?.text = symbols
-    }
-
-    private fun copyToClipboard(password: TextView) {
-        val manager: ClipboardManager =
-                getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        manager.let {
-            it.setPrimaryClip(
-                    ClipData.newPlainText(getString(R.string.password), password.text.toString()))
-            Toast.makeText(this, R.string.toast_text_copied, Toast.LENGTH_SHORT).show()
-        }
     }
 
     companion object {

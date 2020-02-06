@@ -1,4 +1,4 @@
-package com.sber.rupassword
+package com.sber.rupassword.screens.common
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.sber.rupassword.R
+import com.sber.rupassword.models.Password
 import kotlinx.android.synthetic.main.saved_password.view.*
 
 class PasswordsAdapter(private val interaction: Interaction? = null) :
