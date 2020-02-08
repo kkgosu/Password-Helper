@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class PasswordHelperTest {
 
@@ -31,7 +30,7 @@ public class PasswordHelperTest {
 
     @Test
     public void convert() {
-        assertTrue("Error in test case", SOURCES.length == RESULTS.length);
+        assertEquals("Error in test case", SOURCES.length, RESULTS.length);
         for (int i = 0; i < SOURCES.length; i++) {
             assertEquals(RESULTS[i], helper.convert(SOURCES[i]));
         }
