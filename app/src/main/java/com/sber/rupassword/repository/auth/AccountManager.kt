@@ -48,11 +48,6 @@ class AccountManager(
         manager.addAccountExplicitly(account.androidAccount, account.password, bundle)
     }
 
-    fun getToken(): String? =
-            manager.getAccountsByType(Authenticator.ACCOUNT_TYPE).firstOrNull()?.let {
-                manager.getUserData(it, TOKEN_KEY)
-            }
-
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     override fun removeAccount(activity: Activity) {
         val account = current?.androidAccount ?: return

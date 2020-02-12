@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.saved_password.view.*
 class PasswordsAdapter(private val interaction: Interaction? = null) :
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Password>() {
+    private val diffCallback = object : DiffUtil.ItemCallback<Password>() {
 
         override fun areItemsTheSame(oldItem: Password, newItem: Password): Boolean {
             return oldItem.login == newItem.login && oldItem.password == newItem.password
@@ -24,7 +24,7 @@ class PasswordsAdapter(private val interaction: Interaction? = null) :
         }
 
     }
-    private val differ = AsyncListDiffer(this, DIFF_CALLBACK)
+    private val differ = AsyncListDiffer(this, diffCallback)
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -55,7 +55,7 @@ class PasswordsAdapter(private val interaction: Interaction? = null) :
 
     class ViewHolder
     constructor(itemView: View,
-            private val interaction: Interaction?) : RecyclerView.ViewHolder(itemView) {
+                private val interaction: Interaction?) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: Password) = with(itemView) {
             itemView.setOnClickListener {

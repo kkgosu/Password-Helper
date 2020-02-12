@@ -11,7 +11,7 @@ import com.sber.rupassword.screens.main.MainActivity
 import com.sber.rupassword.screens.resetmasterpassword.ResetMasterPasswordActivity
 import kotlinx.android.synthetic.main.activity_master_password.*
 
-class MasterPasswordActivity() : AppCompatActivity(), IMasterPasswordContract.View {
+class MasterPasswordActivity : AppCompatActivity(), IMasterPasswordContract.View {
 
     private lateinit var presenter: MasterPasswordPresenter
 

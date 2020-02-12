@@ -7,8 +7,7 @@ data class Password(val site: String, val login: String, val password: String) :
     constructor(parcel: Parcel) : this(
             parcel.readString()!!,
             parcel.readString()!!,
-            parcel.readString()!!) {
-    }
+            parcel.readString()!!)
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(site)
