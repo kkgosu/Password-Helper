@@ -17,3 +17,5 @@ App was made without any additional libraries (except [Gson](https://github.com/
 <img src="/preview/Screenshot_1581493164.png" width="32%"/>
 <img src="/preview/Screenshot_1581493172.png" width="32%"/>
 </p>
+
+[![codebeat badge](https://codebeat.co/badges/1bb71338-9e7b-4825-9b1c-13e245105fee)](https://codebeat.co/projects/github-com-kkgosu-password-helper-master)
