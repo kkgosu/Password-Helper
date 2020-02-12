@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="result_margin">16dp</dimen>
-    <dimen name="copy_button_padding">4dp</dimen>
+    <dimen name="margin_top_result">16dp</dimen>
+    <dimen name="padding_copy_button">4dp</dimen>
     <dimen name="corner_radius">2dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="margin_fab">16dp</dimen>
+    <dimen name="padding_main">16dp</dimen>
+    <dimen name="margin_top_between_components">24dp</dimen>
+    <dimen name="height_header">64dp</dimen>
+    <dimen name="height_image_button">36dp</dimen>
+    <dimen name="margin_start_result">8dp</dimen>
+    <dimen name="height_complexity_line">4dp</dimen>
+    <dimen name="padding_small">4dp</dimen>
 </resources>

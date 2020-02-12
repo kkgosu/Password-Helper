@@ -25,7 +25,7 @@
                 android:id="@+id/toolbar"
                 style="@style/Header"
                 android:layout_width="match_parent"
-                android:layout_height="64dp"
+                android:layout_height="@dimen/height_header"
                 android:background="@color/material_blue"
                 android:text="@string/convert_password"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -35,19 +35,19 @@
                 style="@style/ResultTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="@dimen/result_margin"
+                android:layout_marginStart="@dimen/margin_start_result"
+                android:layout_marginTop="@dimen/margin_top_result"
                 app:layout_constraintEnd_toStartOf="@id/copy_password"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
             <ImageButton
                 android:id="@+id/copy_password"
-                style="@style/ImageButton"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/ic_content_copy_black_24dp"
+                style="@style/ImageButtonCopy"
+                android:layout_width="@dimen/height_image_button"
+                android:layout_height="@dimen/height_image_button"
+                android:layout_marginEnd="@dimen/margin_start_result"
+                android:tint="@color/white"
                 app:layout_constraintBottom_toBottomOf="@id/password_result"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/password_result"
@@ -56,9 +56,9 @@
             <ImageView
                 android:id="@+id/password_complexity"
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
+                android:layout_height="@dimen/height_complexity_line"
                 android:layout_marginTop="8dp"
-                android:src="@drawable/password_strength_line"
+                android:src="@drawable/password_complexity_line"
                 app:layout_constraintTop_toBottomOf="@id/password_result" />
 
             <TextView
@@ -66,8 +66,6 @@
                 style="@style/BitsTextAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/grey_100"
-                android:padding="4dp"
                 app:layout_constraintTop_toBottomOf="@id/password_complexity" />
 
             <EditText
@@ -78,20 +76,21 @@
                 android:background="@drawable/new_input_bg"
                 android:hint="@string/password_ru"
                 android:inputType="text"
-                app:layout_constraintTop_toBottomOf="@id/password_bits" />
+                app:layout_constraintTop_toBottomOf="@id/password_bits"
+                tools:ignore="TextFields" />
 
             <FrameLayout
                 android:id="@+id/divider_layout"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
+                android:layout_height="wrap_content"
                 android:background="@color/grey_100"
                 app:layout_constraintTop_toBottomOf="@id/password_input">
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="@dimen/margin_top_between_components"
+                    android:layout_marginBottom="@dimen/margin_top_between_components"
                     android:background="@color/blue_grey_100" />
             </FrameLayout>
 
@@ -101,7 +100,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@color/material_blue"
-                android:minHeight="64dp"
+                android:minHeight="@dimen/height_header"
                 android:text="@string/u_can_generate_new_password"
                 app:layout_constraintEnd_toStartOf="@id/regenerate_password"
                 app:layout_constraintStart_toStartOf="parent"
@@ -110,9 +109,9 @@
             <ImageButton
                 android:id="@+id/regenerate_password"
                 style="@style/ImageButton"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginEnd="8dp"
+                android:layout_width="@dimen/height_image_button"
+                android:layout_height="@dimen/height_image_button"
+                android:layout_marginEnd="@dimen/margin_start_result"
                 android:src="@drawable/ic_refresh_black_24dp"
                 app:layout_constraintBottom_toBottomOf="@id/generate_password_header"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -123,19 +122,19 @@
                 style="@style/ResultTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="@dimen/result_margin"
+                android:layout_marginStart="@dimen/margin_start_result"
+                android:layout_marginTop="@dimen/margin_top_result"
                 app:layout_constraintEnd_toStartOf="@id/copy_password_generated"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/generate_password_header" />
 
             <ImageButton
                 android:id="@+id/copy_password_generated"
-                style="@style/ImageButton"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/ic_content_copy_black_24dp"
+                style="@style/ImageButtonCopy"
+                android:layout_width="@dimen/height_image_button"
+                android:layout_height="@dimen/height_image_button"
+                android:layout_marginEnd="@dimen/margin_start_result"
+                android:tint="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/password_generated_result"
                 app:layout_constraintTop_toTopOf="@id/password_generated_result" />
@@ -143,9 +142,9 @@
             <ImageView
                 android:id="@+id/password_generated_complexity"
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
+                android:layout_height="@dimen/height_complexity_line"
                 android:layout_marginTop="8dp"
-                android:src="@drawable/password_strength_line"
+                android:src="@drawable/password_complexity_line"
                 app:layout_constraintTop_toBottomOf="@id/password_generated_result" />
 
             <TextView
@@ -153,8 +152,6 @@
                 style="@style/BitsTextAppearance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/grey_100"
-                android:padding="4dp"
                 app:layout_constraintTop_toBottomOf="@id/password_generated_complexity" />
 
             <TextView
@@ -162,9 +159,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/grey_100"
-                android:padding="4dp"
-                android:paddingStart="2dp"
-                android:paddingEnd="2dp"
+                android:paddingTop="@dimen/padding_small"
+                android:paddingBottom="@dimen/padding_small"
                 android:text="@string/password_length"
                 android:textAppearance="@style/PasswordLengthTextAppearance"
                 app:layout_constraintStart_toStartOf="parent"
@@ -175,9 +171,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@color/grey_100"
-                android:padding="4dp"
-                android:paddingStart="2dp"
-                android:paddingEnd="2dp"
+                android:padding="@dimen/padding_small"
                 android:textAppearance="@style/PasswordLengthTextAppearance"
                 app:layout_constraintBottom_toBottomOf="@id/password_length_label"
                 app:layout_constraintEnd_toEndOf="parent"

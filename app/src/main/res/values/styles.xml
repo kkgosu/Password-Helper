@@ -46,7 +46,7 @@
         <item name="android:layout_marginStart">0dp</item>
         <item name="android:layout_marginEnd">0dp</item>
         <item name="android:layout_alignParentBottom">true</item>
-        <item name="android:src">@drawable/password_strength_line</item>
+        <item name="android:src">@drawable/password_complexity_line</item>
     </style>
 
     <style name="Input">
@@ -59,7 +59,12 @@
     <style name="ImageButton">
         <item name="android:tint">@color/white</item>
         <item name="android:background">@android:color/transparent</item>
-        <item name="android:padding">@dimen/copy_button_padding</item>
+        <item name="android:padding">@dimen/padding_copy_button</item>
+    </style>
+
+    <style name="ImageButtonCopy" parent="ImageButton">
+        <item name="android:tint">@color/grey_800</item>
+        <item name="android:src">@drawable/ic_content_copy_black_24dp</item>
     </style>
 
     <style name="Switch" parent="Theme.AppCompat.DayNight.NoActionBar">
@@ -73,6 +78,8 @@
     <style name="BitsTextAppearance" parent="@android:style/TextAppearance.Material">
         <item name="android:textAlignment">center</item>
         <item name="android:textColor">@color/grey_800</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:background">@color/grey_100</item>
     </style>
 
     <style name="PasswordLengthTextAppearance" parent="@android:style/TextAppearance.Material">
@@ -110,5 +117,35 @@
         <item name="android:layout_marginTop">16dp</item>
         <item name="android:textColorHint">@color/blue_grey_500</item>
         <item name="hintTextAppearance">@style/HintText</item>
+    </style>
+
+    <style name="InputLayoutPassword" parent="InputLayout">
+        <item name="passwordToggleEnabled">true</item>
+        <item name="passwordToggleTint">@color/grey_800</item>
+    </style>
+
+    <style name="TextAppearanceHeader">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+        <item name="android:textColor">@color/grey_800</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearanceDescription">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>
+        <item name="android:textColor">@color/grey_700</item>
+    </style>
+
+    <style name="ButtonSolid">
+        <item name="android:background">@drawable/button_bg</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Button</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ButtonOutlined">
+        <item name="android:background">@drawable/button_not_accent_bg</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Button</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 </resources>
