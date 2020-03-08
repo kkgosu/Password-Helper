@@ -19,8 +19,7 @@ class MasterPasswordActivity() : AppCompatActivity(), IMasterPasswordContract.Vi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_master_password)
 
-        presenter = MasterPasswordPresenter(
-                this)
+        presenter = MasterPasswordPresenter(this)
 
         unlock.setOnClickListener {
             presenter.onNextClicked(master_password_input.text.toString())

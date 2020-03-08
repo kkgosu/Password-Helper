@@ -1,6 +1,5 @@
 package com.sber.rupassword.screens.createmasterpassword.navigation
 
-import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
@@ -10,18 +9,25 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import androidx.test.rule.ActivityTestRule
 import com.sber.rupassword.R
+import com.sber.rupassword.checkViewIsDisplayed
+import com.sber.rupassword.performClickOnView
 import com.sber.rupassword.screens.createmasterpassword.CreateMasterPasswordActivity
+import org.junit.Assert.assertTrue
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class CreateMasterPasswordActivityNavigationTest {
 
+    @get:Rule
+    val activityTestRule: ActivityTestRule<CreateMasterPasswordActivity> = ActivityTestRule(CreateMasterPasswordActivity::class.java)
+
     @Test
     fun test_navToMasterPasswordActivityAndBack() {
         //given
-        val activityScenario = ActivityScenario.launch(CreateMasterPasswordActivity::class.java)
         val input = "1337"
 
         //execute and verify
@@ -45,7 +51,6 @@ class CreateMasterPasswordActivityNavigationTest {
     @Test
     fun test_navToConfirmPasswordOnEqualInput() {
         //given
-        val activityScenario = ActivityScenario.launch(CreateMasterPasswordActivity::class.java)
         val input = "1337"
 
         //execute and verify
@@ -66,7 +71,6 @@ class CreateMasterPasswordActivityNavigationTest {
     @Test
     fun test_navToConfirmPasswordOnNotEqualInput() {
         //given
-        val activityScenario = ActivityScenario.launch(CreateMasterPasswordActivity::class.java)
         val input1 = "1337"
         val input2 = "1111"
 
@@ -87,8 +91,12 @@ class CreateMasterPasswordActivityNavigationTest {
 
     @Test
     fun test_cancelButtonCloseApp() {
-        val activityScenario = ActivityScenario.launch(CreateMasterPasswordActivity::class.java)
 
-        onView(withId(R.id.cancel)).perform(click())
+        checkViewIsDisplayed(R.id.master_password_header)
+        checkViewIsDisplayed(R.id.cancel)
+        performClickOnView(R.id.cancel)
+
+        Thread.sleep(2000)
+        assertTrue(activityTestRule.activity.isFinishing)
     }
 }
